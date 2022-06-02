@@ -1,0 +1,30 @@
+:root{
+    --colorwhite: #edece9;
+    --colorBrown: #775548;
+    --colorOrange: #ef6d24;
+    --colorYellow: #d8b03b;
+    --fonts:Verdana, Arial, sans-serif;
+}
+
+body{
+background-color: var(--colorwhite);
+font-family: var(--fonts);
+font-size: 16px;
+color: var(--colorBrown);
+}
+
+main h1{
+color: var(--colorBrown);    
+font-size: 48px;
+}
+
+
+
+h2{
+  background-color: var(--colorBrown);
+  color: var(--colorwhite);
+}
+
+h2:last-child{
+    color: var(--colorYellow);
+}
