@@ -13,18 +13,63 @@ font-size: 16px;
 color: var(--colorBrown);
 }
 
+/* HEADER */
+
+img{
+  width: 100vw;
+  height: auto;
+}
+
+.navbar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; 
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+nav a, nav p{
+  color: var(--colorOrange);
+  padding: 0 10px 0 0;
+  margin: 5px 0 0 0;
+}
+
+/* MAIN */
+
 main h1{
 color: var(--colorBrown);    
 font-size: 48px;
 }
-
-
 
 h2{
   background-color: var(--colorBrown);
   color: var(--colorwhite);
 }
 
-h2:last-child{
+body h2:last-of-type{
     color: var(--colorYellow);
+}
+
+li a{
+  color: var(--colorOrange);
+  font-weight: bolder;
+}
+
+.btn-blue{
+  color: blue;
+}
+
+.btn-red{
+  color: red;
+}
+
+section ul:nth-of-type(3) a:hover{
+  color: black !important;
+}
+
+span{
+  color: var(--colorOrange);
+  font-weight: bold;
+  text-decoration: underline;
 }
