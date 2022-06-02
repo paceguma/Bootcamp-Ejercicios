@@ -1,0 +1,115 @@
+:root {
+    --colorPinkLight: #e11364;
+    --colorPinkDark: #bc105c;
+    --colorWhite: #fafafb;
+    --fontFamily: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: var(--colorPinkLight);
+    font-size: 16px;
+    font-family: var(--fontFamily);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*HEADER */ 
+
+header{
+    width: 80vw;
+    text-align: center;
+}
+
+h1{
+    font-size: 38px;
+    color: var(--colorWhite);
+    background-color: var(--colorPinkDark);
+    border-left: 4px solid var(--colorWhite);
+    border-right: 4px solid var(--colorWhite);
+    padding: 15px 0 15px 0;
+}
+
+/* SECTION */
+
+section{
+    background-color:var(--colorPinkDark);
+    width: 80vw;
+    height: auto;
+    border-radius: 4px;
+    padding: 0 0 25px 0;
+}
+
+h2{
+    color: var(--colorWhite);
+    font-size: 24px;
+    margin-left: 1.5%
+}
+
+article{
+    width: auto;
+    background-color: var(--colorWhite);
+    border-radius: 4px;
+    padding: 10px;
+    margin: 0 1.5% 1.5% 1.5%;
+
+}
+
+h3{
+   color: var(--colorPinkDark);
+    font-size: 18px;
+    text-align: right;
+    padding: 8px 8px 0 0;
+}
+
+hr{
+   border: 1px dotted var(--colorPinkDark);
+}
+
+img{
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+p {
+    font-size: 10px;
+}
+
+.div-btn{
+    text-align: center;
+}
+.button-comprar{
+    border-radius: 5px;
+    background-color: rgb(41, 142, 27);
+    border: none;
+    padding: 8px 16px 8px 16px;
+    text-align: center;
+}
+
+.button-comprar a{
+    text-decoration: none;
+    color: var(--colorWhite);
+    font-size: 18px;
+}
+
+.button-comprar:hover{
+    background-color: var(--colorPinkLight);
+}
+
+/* FOOTER  */
+
+footer{
+    background-color: #ca88a6;
+    border-radius: 4px;
+    margin: 10px 0 0 0;
+    padding: 16px 0 16px 0;
+    width: 80vw;
+}
+
+footer p{
+    font-weight: bold;
+    color: var(--colorWhite);
+    text-align: center;
+    width: auto;
+    font-size: 14px;
+}
