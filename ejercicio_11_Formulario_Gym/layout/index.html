@@ -1,84 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ejercicio 11</title>
-  </head>
-  <body>
-    <h1>Vení al gym</h1>
-    <form action="">
-      <fieldset>
-        <legend>Datos personales</legend>
-        <div>
-          <label for="">Nombre: *</label>
-          <input type="text" />
-        </div>
-        <div>
-          <label for="">Apellido: *</label>
-          <input type="text" />
-        </div>
-        <div>
-          <label for="">Documento: *</label>
-          <input type="text" name="" />
-        </div>
-        <div>
-          <label for="">Nacionalidad: *</label>
-          <select name="" id="">
-            <option value="uruguay">Uruguay</option>
-            <option value=""></option>
-            <option value=""></option>
-          </select>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/default.css" />
+  <title>Ejercicio 11</title>
+</head>
+
+<body>
+  <main>
+    <!-- header -->
+    <div class="header">
+      <div class="form-title-top"></div>
+      <h1>
+        Vení al gym
+        <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f4aa.svg" alt="emoji fuerza"
+          style="width: 35px;" />
+      </h1>
+      <div class="form-title-bottom"></div>
+    </div>
+
+    <section>
+      <form action="" method="post">
+        <!-- personals details -->
+        <fieldset>
+          <legend>
+            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f64b_200d_2642.svg"
+              alt="emoji persona" srcset="" />
+            <strong>Datos personales</strong>
+            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f440.svg" alt="emoji ojos" />
+          </legend>
+
+          <div class="col-center">
+            <label for="nombre"> Nombre: *</label>
+            <input id="nombre" class="input--contenido" type="text" name="nombre" required pattern="[a-zA-Z ]{2,}"
+              maxlength="30" title="Inserte su nombre" />
+          </div>
+
+          <div class="col-center">
+            <label for="apellido">Apellido: *</label>
+            <input id="apellido" class="input--contenido" type="text" name="apellido" required pattern="[a-zA-Z ]{2,}"
+              maxlength="50" title="Inserte su apellido" />
+          </div>
+
+          <div class="col-center">
+            <label for="documento">Documento: *</label>
+            <input id="documento" class="input--contenido" type="text" name="documento" required
+              title="Inserte su documento" />
+          </div>
+
+          <div class="col-center">
+            <label for="nacionalidad">Nacionalidad: *</label>
+            <select placeholder=" - Seleccionar - " required id="nacionalidad" class="input--contenido"
+              name="nacionalidad" title="Inserte su nacionalidad">
+              <option value="uruguay">Uruguay</option>
+              <option value="argentina">Argentina</option>
+              <option value="brasil">Brasil</option>
+            </select>
+          </div>
+
+          <div class="col-center">
+            <label for="biografia">Contanos un poco de vos...</label>
+            <textarea name="biografia" id="biografia" cols="60" rows="4" title="Contanos sobre vos"></textarea>
+          </div>
+
+          <div class="col-center">
+            <label for="sexo">Sexo *</label>
+            <div class="row-3">
+              <div>
+                <input type="radio" name="sexo" id="femenino" />
+                <label for="femenino">Femenino</label>
+              </div>
+              <div>
+                <input type="radio" name="sexo" id="masculino" />
+                <label for="masculino">Masculino</label>
+              </div>
+              <div>
+                <input type="radio" name="sexo" id="otro" />
+                <label for="otro">Otros</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- separation -->
+        <hr />
+
+        <!-- contact -->
+        <fieldset>
+          <legend>
+            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f4f1.svg" alt="" srcset="" />
+            <strong>Datos de contacto </strong><img
+              src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/2709.svg" alt="" srcset="" />
+          </legend>
+
+          <div class="col-center">
+            <label for="">Teléfono</label>
+            <input class="input--contenido" type="tel" name="telefono" id="telefono"
+              placeholder="Código de área y número" pattern="[0-9]{8,15}" minlength="9" maxlength="15"
+              title="Utilizar solo números, entre 8 y 15 digitos en total" />
+          </div>
+
+          <div class="col-center">
+            <label for="">Dirección de correo electrónico *</label>
+            <input class="input--contenido" type="email" id="mail" name="mail" placeholder="Ej: mail@gmail.com"
+              title="Formato del mail: nombre@dominio.com" required />
+          </div>
+        </fieldset>
+
+        <!-- separation -->
+        <hr />
+
+        <!-- activities -->
+        <fieldset>
+          <legend>
+            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f6b4_200d_2642.svg" alt="" />
+            <strong>Actividades</strong>
+            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f938_200d_2640.svg" alt=""
+              srcset="" />
+          </legend>
+
+          <div class="col-start">
+            <p class="ms">
+              <small>Por favor, indica cuáles actividades te interesan</small>
+            </p>
+
+            <label for="">Sede Palermo</label>
+            <div class="mb">
+              <input type="checkbox" name="" id="" />
+              <label for="">Basquet</label>
+              <input type="checkbox" name="" id="" />
+              <label for="">Boxeo</label>
+              <input type="checkbox" name="" id="" />
+              <label for="">Fútbol</label>
+              <input type="checkbox" name="" id="" />
+              <label for="">Tenis</label>
+            </div>
+            <label for="">Sede Rosario</label>
+            <div class="mb">
+              <input type="checkbox" name="" id="" />
+              <label for="">Basquet</label>
+              <input type="checkbox" name="" id="" />
+              <label for="">Boxeo</label>
+              <input type="checkbox" name="" id="" />
+              <label for="">Fútbol</label>
+              <input type="checkbox" name="" id="" />
+              <label for="">Tenis</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- conditions -->
+        <div class="separation--div text-color">
+          <div class="separation-item">
+            <input type="checkbox" />
+            <label for="">Acepto las condiciones *</label>
+          </div>
+
+          <div class="separation-item">
+            <input type="checkbox" />
+            <label for="">Deseo recibir novedades</label>
+          </div>
+          <p class="separation-item">*: campo obligatorio</p>
         </div>
 
-        <label for="">Contanos un poco de vos...</label>
-        <textarea name="" id="" cols="30" rows="2"></textarea>
-        <hr class="noshade">
-        <label for="">Sexo *</label>
-        <input type="radio" name="femenino" id="" />
-        <label for="">Femenino</label>
-        <input type="radio" name="mpasculino" id="" />
-        <label for="" >Masculino</label>
-        <input type="radio" name="otros" id="" />
-        <label for="">Otros</label>
-      </fieldset>
-      <fieldset>
-        <legend>Datos de contacto</legend>
-        <label for="">Teléfono</label>
-        <input type="tel" name="" id="" />
-        <label for="">Dirección de correo electrónico *</label>
-        <input type="email" name="" id="" />
-      </fieldset>
-      <fieldset>
-        <legend>Actividades</legend>
-        <p>Por favor, indica cuáles actividades te interesan</p>
-        <label for="">Sede Palermo</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Basquet</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Boxeo</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Fútbol</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Tenis</label>
-        <label for="">Sede Rosario</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Basquet</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Boxeo</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Fútbol</label>
-        <input type="checkbox" name="" id="" />
-        <label for="">Tenis</label>
-      </fieldset>
-      <input type="checkbox" />
-      <label for="">Acepto las condiciones *</label>
-      <input type="checkbox" />
-      <label for="">Deseo recibir novedades</label>
-      <p>*: campo obligatorio</p>
-      <button>Iniciar afiliación</button>
-      <button>Restablecer</button>
-    </form>
-  </body>
+        <div class="row-btn">
+          <button type="submit" id="submit">Iniciar afiliación</buttonn>
+          <button type="reset" id="reset">Restablecer</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+
 </html>
