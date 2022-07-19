@@ -1,69 +1,184 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Oxygen+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Oxygen+Mono&display=swap");
 
-:root{
-    --font-family-title: Bungee Inline;
-    --bg-color-white: rgb(226, 226, 226);
-    --font-family-txt: Oxygen Mono;
+:root {
+  --font-family-title: Bungee Inline;
+  --bg-color-white: rgb(226, 226, 226);
+  --font-family-txt: Oxygen Mono;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-img, hr{
-    display: none;
+.img-icon,
+hr {
+  display: none;
 }
 
-body{
-    background-image: url("../img/elementos-fitness.jpg");
-    background-repeat: no-repeat;
-    background-size: cover; 
-    font-family: var(--font-family-txt);
-
+body {
+  background-image: url("../img/elementos-fitness.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--font-family-txt);
 }
 
 /************* HEADER *****************/
 
-h1{
-    font-family: var(--font-family-title);
-    font-size: 48px;
-    margin: 3% 0 1% 5%;
+h1 {
+  font-family: var(--font-family-title);
+  font-size: 48px;
+  margin: 10vh 0 5vh 0;
+  text-align: center;
+  color: antiquewhite;
 }
 
-.grid-area{
+legend {
+  background-color: violet;
+  border-radius: 4px;
+  padding: 0.5rem 0.8rem;
+}
+
+fieldset {
+  background-color: var(--bg-color-white);
+  border: none;
+  border-radius: 8px;
+}
+
+.col-center,
+.col-start,
+.separation--div {
+  display: block;
+}
+
+.grid-area {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    "a a b c "
+    "a a b d "
+    "a a e f";
+  gap: 0.8rem;
+}
+
+.grid-a {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
+}
+
+.grid-b {
+  grid-area: b;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+.grid-c {
+  grid-area: c;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+.grid-d {
+  grid-area: d;
+}
+
+.grid-e {
+  grid-area: e;
+}
+
+.grid-f{
+    grid-area: f;
     display: grid;
-    grid-template-areas: 
-    "a b c"
-    "a b c"
-    ;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows:50px;
+   gap: 16px;
+   
 }
 
-fieldset{
-    background-color: var(--bg-color-white);
-    /* margin: 0 5% 1% 5%; */
+.d-flex {
+  padding: 1rem 4rem;
 }
 
-.col-center, .col-start, .separation--div{
-    margin: 5%;
+label {
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+input,
+select,
+textarea {
+  border: none;
+  height: 25px;
+  text-indent: .5rem;
+}
+
+textarea{
+    max-width: 350px;
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border: 1px solid rgb(239, 25, 225);
+}
+
+input:focus,
+textarea:focus {
+  background-color: rgba(238, 130, 238, 0.529);
+  color: black;
+}
+
+.col-center {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  align-content: space-around;
+}
+
+.checkbox,
+.mb {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox label,.separation-item label {
+  margin: 0 0 0 16px;
+}
+
+.mb{
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
 }
 
-.fieldset-a{
-    grid-area: a;
+.separation--div label, p{
+    font-size: 14px;    
 }
 
-.fieldset-b{
-    grid-area:b;
+
+.separation-item{
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    color: antiquewhite;
 }
 
-.fieldset-c{
-    grid-area: c;
+button{
+    border: none;
+   background-color: violet;
+   border-radius: 8px;
 }
 
-.grid {
-    grid-area: d;
+button:hover{
+    background-color: blueviolet;
+    color: aliceblue;
+    border: 1px solid wheat;
 }

@@ -31,7 +31,7 @@ body{
 
 /****************** HEADER **************************/
 
-.header{
+header{
     margin: 4rem 0 4rem 0;
 }
 
@@ -54,6 +54,10 @@ h1{
     font-family: var(--font-family-Poppins);
     font-size: var(--font-size-big);
     text-align: center;
+}
+
+.grid-a{
+    display: none;
 }
 
 /********************** SECTION ***********************/

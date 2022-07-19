@@ -6,35 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- <link rel="stylesheet" href="../css/default.css" /> -->
-  <link rel="stylesheet" href="../css/futurista.css">
+  <!-- <link rel="stylesheet" href="../css/futurista.css"> -->
+  <link rel="stylesheet" href="../css/retro.css">
   <title>Ejercicio 11</title>
 </head>
 
 <body>
   <main>
     <!-- header -->
-    <div class="header">
-      <div class="form-title-top"></div>
-      <h1>
-        Vení al gym
-        <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f4aa.svg" alt="emoji fuerza"
-          style="width: 35px;" />
-      </h1>
-      <div class="form-title-bottom"></div>
-    </div>
 
+    <header>
+      
+        <div class="form-title-top"></div>
+        <h1>
+          Vení al gym
+          <img class="img-icon" src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f4aa.svg" alt="emoji fuerza"
+            style="width: 38px" />
+        </h1>
+        <div class="form-title-bottom"></div>
+ 
+    </header>
+
+ 
     <section>
       <form action="" method="post" class="grid-area">
+ 
+        <img src="../img/animation_500_l5r21meu.gif" alt="" class="grid-a">
+
         <!-- personals details -->
-        <fieldset class="fieldset-a">
+        <fieldset class="grid-b d-flex">
           <legend>
-            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f64b_200d_2642.svg"
-              alt="emoji persona" srcset="" />
+            <img class="img-icon" src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f64b_200d_2642.svg"
+              alt="emoji persona" />
             <strong>Datos personales</strong>
-            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f440.svg" alt="emoji ojos" />
+            <img class="img-icon" src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f440.svg" alt="emoji ojos" />
           </legend>
 
-          <div class="col-center">
+          <div class="col-center ">
             <label for="nombre"> Nombre: *</label>
             <input id="nombre" class="input--contenido" type="text" name="nombre" required pattern="[a-zA-Z ]{2,}"
               maxlength="30" title="Inserte su nombre" />
@@ -54,8 +62,9 @@
 
           <div class="col-center">
             <label for="nacionalidad">Nacionalidad: *</label>
-            <select placeholder=" - Seleccionar - " required id="nacionalidad" class="input--contenido"
-              name="nacionalidad" title="Inserte su nacionalidad">
+            <select required id="nacionalidad" class="input--contenido" name="nacionalidad"
+              title="Inserte su nacionalidad">
+              <option hidden value="Seleccionar">Seleccionar</option>
               <option value="uruguay">Uruguay</option>
               <option value="argentina">Argentina</option>
               <option value="brasil">Brasil</option>
@@ -70,15 +79,15 @@
           <div class="col-center">
             <label for="sexo">Sexo *</label>
             <div class="row-3">
-              <div>
+              <div class="checkbox">
                 <input type="radio" name="sexo" id="femenino" />
                 <label for="femenino">Femenino</label>
               </div>
-              <div>
+              <div class="checkbox">
                 <input type="radio" name="sexo" id="masculino" />
                 <label for="masculino">Masculino</label>
               </div>
-              <div>
+              <div class="checkbox">
                 <input type="radio" name="sexo" id="otro" />
                 <label for="otro">Otros</label>
               </div>
@@ -90,11 +99,11 @@
         <hr />
 
         <!-- contact -->
-        <fieldset class="fieldset-b">
+        <fieldset class="grid-c d-flex">
           <legend>
-            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f4f1.svg" alt="" srcset="" />
-            <strong>Datos de contacto </strong><img
-              src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/2709.svg" alt="" srcset="" />
+            <img class="img-icon" src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f4f1.svg" alt="emoji celular" />
+            <strong>Datos de contacto </strong><img class="img-icon"
+              src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.0/svg/2709.svg" alt="emoji email" />
           </legend>
 
           <div class="col-center">
@@ -113,14 +122,15 @@
 
         <!-- separation -->
         <hr />
-
+ 
         <!-- activities -->
-        <fieldset class="fieldset-c">
+        <fieldset class="grid-d d-flex">
           <legend>
-            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f6b4_200d_2642.svg" alt="" />
+            <img class="img-icon" src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f6b4_200d_2642.svg"
+              alt="emoji persona en bicicleta" />
             <strong>Actividades</strong>
-            <img src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f938_200d_2640.svg" alt=""
-              srcset="" />
+            <img class="img-icon" src="https://cdn.jsdelivr.net/gh/googlei18n/noto-emoji/svg/emoji_u1f938_200d_2640.svg"
+              alt="emoji persona haciendo ejercicio" />
           </legend>
 
           <div class="col-start">
@@ -154,7 +164,7 @@
         </fieldset>
 
         <!-- conditions -->
-        <div class="separation--div text-color grid">
+        <div class="separation--div text-color grid-e">
           <div class="separation-item">
             <input type="checkbox" />
             <label for="">Acepto las condiciones *</label>
@@ -167,9 +177,9 @@
           <p class="separation-item">*: campo obligatorio</p>
         </div>
 
-        <div class="row-btn">
+        <div class="row-btn grid-f">
           <button type="submit" id="submit">Iniciar afiliación</buttonn>
-          <button type="reset" id="reset">Restablecer</button>
+            <button type="reset" id="reset">Restablecer</button>
         </div>
       </form>
     </section>
@@ -178,4 +188,3 @@
 </body>
 
 </html>
-
