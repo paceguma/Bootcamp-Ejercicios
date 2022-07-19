@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+@font-face{
+    font-family: "Retroking";
+    src: url(../fonts/Retroking.ttf) format("truetype");
+}
+
+:root{
+    --color-red:#DC5B48;
+    --color-white:#efeae2;
+    --color-blue: #5CA8A4;
+    --color-yellow: #f3e483;
+    --font-size-medium: 14px;
+    --font-size-big: 56px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color-yellow);
+   
+}
+
+.img-icon, hr, .grid-a{
+    display: none;
+}
+
+/* HEADER */
+
+h1{
+    font-family: "Retroking";
+    font-size: var(--font-size-big);
+    text-align: center;
+    margin: 5rem 0;
+}
+
+/* SECTION */
+
+section{
+    display: flex;
+    justify-content: center;
+}
+
+
+.television{
+    position: absolute;
+    width: 80rem;
+    z-index: 1;
+}
+
+.grid-area{
+    /* width: 90%; */
+    position: relative;
+    margin: 0 auto;
+
+}
+/* .grid-fieldset{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4,1fr);
+    column-gap: 15px; 
+    width: 90%;
+} */
+
+fieldset{
+    background-color: var(--color-white);
+width: 20rem;
+}
+
+.grid-b{
+    grid-row-start: 1;
+    grid-row-end: 5;
+}
+
+.grid-c{
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+
+.grid-d{
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.grid-e{
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.grid-f{
+    grid-row-start: 4;
+    grid-row-end: 5;
+}
