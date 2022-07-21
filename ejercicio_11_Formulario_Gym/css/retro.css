@@ -12,6 +12,7 @@
     --color-yellow: #f3e483;
     --font-size-medium: 14px;
     --font-size-big: 56px;
+    --font-family: "Retroking";
 }
 
 *{
@@ -31,54 +32,79 @@ body{
 
 /* HEADER */
 
+header{
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h1{
-    font-family: "Retroking";
+    font-family: var(--font-family);
     font-size: var(--font-size-big);
-    text-align: center;
-    margin: 5rem 0;
 }
 
 /* SECTION */
 
 section{
+    height: 100vh;
+    position: relative;
     display: flex;
-    justify-content: center;
+      justify-content: center;
 }
 
 
 .television{
     position: absolute;
     width: 80rem;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .grid-area{
-    /* width: 90%; */
     position: relative;
-    margin: 0 auto;
+   top: 150px;
+   width: 700px;
+   left: 50px;
+   right: -50px;
 
 }
-/* .grid-fieldset{
+.grid-fieldset{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4,1fr);
-    column-gap: 15px; 
-    width: 90%;
-} */
+    grid-template-rows: repeat(3,1fr);
+    /* column-gap: 15px;  */
+    /* width: 50%; */
+}
 
 fieldset{
-    background-color: var(--color-white);
-width: 20rem;
+    background-color: var(--color-yellow);
+    width: 20rem;
+    border: double;
+    border-radius: 24px;    
+    border-color: var(--color-red);
+    
+}
+
+
+legend{
+background-color: var(--color-red);
+margin: 0 24px;
+padding: 8px 16px;
+border-radius: 4px;
+font-family: var(--font-family);
+color: var(--color-white);
 }
 
 .grid-b{
     grid-row-start: 1;
-    grid-row-end: 5;
+    grid-row-end: 3;
 }
 
 .grid-c{
     grid-row-start: 1;
     grid-row-end: 2;
+
 }
 
 
@@ -93,6 +119,6 @@ width: 20rem;
 }
 
 .grid-f{
-    grid-row-start: 4;
-    grid-row-end: 5;
+    grid-row-start: 3;
+    grid-row-end:4;
 }
