@@ -49,7 +49,7 @@ h1 {
 /******************** SECTION ***************/
 
 section {
-  height: 100vh;
+  height: 80%;
   position: relative;
   display: flex;
   justify-content: center;
