@@ -1,124 +1,218 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
-@font-face{
-    font-family: "Retroking";
-    src: url(../fonts/Retroking.ttf) format("truetype");
+@font-face {
+  font-family: "Retroking";
+  src: url(../fonts/Retroking.ttf) format("truetype");
 }
 
-:root{
-    --color-red:#DC5B48;
-    --color-white:#efeae2;
-    --color-blue: #5CA8A4;
-    --color-yellow: #f3e483;
-    --font-size-medium: 14px;
-    --font-size-big: 56px;
-    --font-family: "Retroking";
+:root {
+  --color-red: #dc5b48;
+  --color-white: #efeae2;
+  --color-blue: #5ca8a4;
+  --color-yellow: #f3e483;
+  --font-size-medium: 14px;
+  --font-size-big: 56px;
+  --font-family: "Retroking";
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: var(--color-yellow);
-   
+body {
+  background-color: var(--color-yellow);
 }
 
-.img-icon, hr, .grid-a{
-    display: none;
+.img-icon,
+hr,
+.grid-a {
+  display: none;
 }
 
-/* HEADER */
+/******************** HEADER ****************/
 
-header{
-    height: 200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+header {
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1{
-    font-family: var(--font-family);
-    font-size: var(--font-size-big);
+h1 {
+  font-family: var(--font-family);
+  font-size: var(--font-size-big);
 }
 
-/* SECTION */
+/******************** SECTION ***************/
 
-section{
-    height: 100vh;
-    position: relative;
-    display: flex;
-      justify-content: center;
+section {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-
-.television{
-    position: absolute;
-    width: 80rem;
-    /* z-index: 1; */
+.television {
+  position: absolute;
+  width: 80rem;
 }
 
-.grid-area{
-    position: relative;
-   top: 150px;
-   width: 700px;
-   left: 50px;
-   right: -50px;
-
-}
-.grid-fieldset{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3,1fr);
-    /* column-gap: 15px;  */
-    /* width: 50%; */
+.grid-fieldset {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  place-content: stretch;
+  position: relative;
+  top: 140px;
+  width: 700px;
+  left: -180px;
 }
 
-fieldset{
-    background-color: var(--color-yellow);
-    width: 20rem;
-    border: double;
-    border-radius: 24px;    
-    border-color: var(--color-red);
-    
+fieldset {
+  background-color: var(--color-yellow);
+  width: 20rem;
+  border: double;
+  border-radius: 24px;
+  border-color: var(--color-red);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+input,
+label,
+select {
+  width: 300px;
 
-legend{
-background-color: var(--color-red);
-margin: 0 24px;
-padding: 8px 16px;
-border-radius: 4px;
-font-family: var(--font-family);
-color: var(--color-white);
+  text-indent: 0.3rem;
+  height: 25px;
 }
 
-.grid-b{
-    grid-row-start: 1;
-    grid-row-end: 3;
+.col-center,
+.col-start {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-.grid-c{
-    grid-row-start: 1;
-    grid-row-end: 2;
-
+input[type="radio"],
+input[type="checkbox"] {
+  width: 20px;
 }
 
-
-.grid-d{
-    grid-row-start: 2;
-    grid-row-end: 3;
+legend {
+  background-color: var(--color-red);
+  margin: 0 24px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 24px;
+  font-family: var(--font-family);
+  color: var(--color-white);
 }
 
-.grid-e{
-    grid-row-start: 3;
-    grid-row-end: 4;
+.row-3,
+.mb {
+  display: flex;
+  align-self: center;
 }
 
-.grid-f{
-    grid-row-start: 3;
-    grid-row-end:4;
+div .checkbox label,
+div .mb label {
+  width: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.grid-b {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  height: 500px;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+}
+
+.grid-c {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  justify-self: stretch;
+  align-self: stretch;
+  width: auto;
+}
+
+.grid-d {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+.grid-e {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-f {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  justify-content: space-between;
+}
+
+textarea {
+  min-width: 300px;
+  max-width: 300px;
+  max-height: 300px;
+  min-height: 50px;
+}
+
+.ms {
+  margin: 0 0 1rem 0;
+}
+
+/**************** CONDICIONES ***************/
+
+.separation-item {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  color: black;
+  font-size: 18px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.separation-item input[type="checkbox"] {
+  margin: 0 16px 0 0;
+}
+
+.separation--div p {
+  color: var(--color-blue);
+}
+
+/********************* BUTTON *****************/
+
+button {
+  border: none;
+  background-color: var(--color-red);
+  border-radius: 90px;
+  padding: 35px;
+  font-family: var(--font-family);
+  font-size: 18px;
+  color: var(--color-white);
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+button:hover {
+  background-color: var(--color-blue);
+  border: 1px solid wheat;
 }
