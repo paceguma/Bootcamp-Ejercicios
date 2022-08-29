@@ -4,11 +4,12 @@
 
 .main-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 
-  @media (max-width: 768px){
-    &{
-        flex-direction: column-reverse;
+  @media (max-width: 768px) {
+    & {
+      flex-direction: column-reverse;
     }
   }
 }
@@ -30,7 +31,9 @@
 **********************************************/
 
 .nav-bar {
-  background-color: mediumaquamarine;
+  order: 2;
+  display: flex;
+  align-items: center;
 
   &__nav-list {
     display: flex;
@@ -46,15 +49,22 @@
 
   &__nav-item {
     text-align: center;
-    background-color: pink;
   }
 
   &__nav-link {
     display: block;
-    background-color: purple;
-    color: #fff;
     padding: 1em 2em;
     text-decoration: none;
+  }
+
+  &__nav-link:hover {
+    color: var(--color-hover);
+    font-weight: bold;
+  }
+
+  &__nav-link:focus {
+    color: var(--color-hover);
+    font-weight: bold;
   }
 
   @media (max-width: 768px) {
@@ -69,91 +79,118 @@
 **********************************************/
 
 .search-bar {
-  background-color: olivedrab;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: 60vw;
 
   &__logo-container,
   &__form-container {
-    padding: 1em;
+    padding: 1em 4em;
   }
 
   &__logo-container {
-    background-color: yellow;
+    background-color: bisque;
+    padding-right: 5em;
   }
 
   &__form-container {
-    background-color: gold;
     flex-basis: 100%;
     display: flex;
     justify-content: center;
   }
 
   &__form-label {
-    background-color: greenyellow;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__form-label span {
+    position: absolute;
+    margin: 0 0.3em;
+    color: var(--color-hover-grey);
+    cursor: pointer;
   }
 
   &__form-search {
-    background-color: deeppink;
-    width: 70%;
+    width: 40%;
+    padding: 0.5em 0;
+    text-indent: 2.3em;
+    border-radius: 8px;
+    border: 0.2px solid var(--color-hover-grey);
+
+    &:hover{
+      outline: 1px solid var(--color-hover);
+    }
+
+    &:focus{
+      outline: 1px solid var(--color-hover);
+    }
   }
 
   &__form-submit {
-    background-color: darkslategrey;
-    color: white;
+    margin: 0 0 0 0.5em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-hover);
   }
 
   &__carrito-container {
+    display: flex;
     flex: 0 0 3em;
-    background-color: goldenrod;
+    justify-content: center;
+    align-items: center;
+
+    &:hover{
+color: var(--color-hover);   
+transform: scale(1.2,1.2);
+}
   }
 }
-
 
 /*********************************************
                 MENU TOGGLE
 **********************************************/
 
 .menu-toggle {
-    display: none;
-    background-color: red;
-    flex: 0 0 3em;
-    position: relative;
-    cursor: pointer;
+  display: none;
+  flex: 0 0 3em;
+  position: relative;
+  cursor: pointer;
 
-    &__label {
-        display: block;
-        background-color: black;
-        height: 100%;
-    }
-    
-    &__top-bread,
-    &__meat,
-    &__bottom-bread {
-        display: block;
-        background-color: #333;
-        height: .2em;
-        position: absolute;
-        left: .5em;
-        right: .5em;
-    }
+  &__label {
+    display: block;
+    background-color: black;
+    height: 100%;
+  }
 
-    &__top-bread {
-        top: .8em;
-    }
+  &__top-bread,
+  &__meat,
+  &__bottom-bread {
+    display: block;
+    height: 0.2em;
+    position: absolute;
+    left: 0.5em;
+    right: 0.5em;
+  }
 
-    &__meat {
-        top: 50%;
-        margin-top: -.1em;
-    }
+  &__top-bread {
+    top: 0.8em;
+  }
 
-    &__bottom-bread {
-        bottom: .8em;
-    }
+  &__meat {
+    top: 50%;
+    margin-top: -0.1em;
+  }
 
-    @media (max-width: 768px){
-      & {
-        display: block;
-      }
+  &__bottom-bread {
+    bottom: 0.8em;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      display: block;
     }
+  }
 }
