@@ -1,12 +1,13 @@
 console.log('Vista alta')
 
-const productos = []
+const productos = [
+    {nombre: 'reloj', precio: '12234', stock: '35', marca: 'Seico', categoria: 'Despertador', envio: true, foto: 'https://images.unsplash.com/photo-1585123334904-845d60e97b29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80', detalles: 'Analogico'},
+    {nombre: 'cartera', precio: '46545 ', stock: '3', marca: 'Gudc', categoria: 'Moda', envio: true, foto: 'https://plus.unsplash.com/premium_photo-1664381364966-150fecf38cf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmFnfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60', detalles: 'Tela'},
+    {nombre: 'Enchufe', precio: '12', stock: '350', marca: 'Chin', categoria: 'Tech', envio: true, foto: 'https://images.unsplash.com/photo-1610056494052-6a4f83a8368c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80', detalles: 'Plastico'}
+]
 const camposValidos = [false, false, false, false, false, false, false]
-
 const inputs = document.querySelectorAll('input')
-
 const form = document.querySelector('form')
-
 const button = document.querySelector('button')
 
 button.disabled = true
@@ -92,7 +93,8 @@ form.addEventListener('submit', (e) => {
     button.disabled = true
 
     // renderProdsObjetos()
-    renderProdsTemplateString()
+    // renderProdsTemplateString()
+    renderProds()
 })
 
 
@@ -144,3 +146,23 @@ const renderProdsTemplateString = () => {
     document.getElementById('listadoProductos').innerHTML = html
 }
 
+const renderProds = () => {
+    const xhr = new XMLHttpRequest()
+    xhr.open('get', 'plantillas/listado.hbs')
+    xhr.addEventListener('load', ()=> {
+      if(xhr.status === 200){
+        let plantillaHbs = xhr.response
+        // console.log(plantillaHbs)
+
+        let template = Handlebars.compile(plantillaHbs)
+        // console.log(template);
+
+        let html = template({productos: productos})
+
+        document.getElementById('listadoProductos').innerHTML = html
+      }  
+    })
+    xhr.send()
+}
+
+renderProds()
