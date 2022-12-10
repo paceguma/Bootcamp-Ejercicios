@@ -8,8 +8,7 @@ function Card(heading, description, image) {
         card.classList.add('card')
         card.href = 'https://sony.com'
 
-        card.innerHTML = `
-        
+        card.innerHTML = `        
         <article class="card__article">
         <div class="card__image-container">
             <img class="card__image" src=${image} alt=${heading}/>
@@ -26,11 +25,12 @@ function Card(heading, description, image) {
 
 }
 
-const elemCardContainer = document.getElementsByClassName()
+const elemCardContainer = document.getElementsByClassName('cards-container')[0]
+// console.log(elemCardContainer);
 
 
 const card1 = new Card('Tv', 'Lorem ijja amtntn', 'img/productos/Artesania (17).png')
-const card2 = new Card('Celuar', 'Lorem ijja amtntn', 'img/productos/Artesania (18).png')
+const card2 = new Card('Celular', 'Lorem ijja amtntn', 'img/productos/Artesania (18).png')
 
 console.log(card1);
 console.log(card2);
