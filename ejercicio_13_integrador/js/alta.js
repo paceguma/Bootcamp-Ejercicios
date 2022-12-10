@@ -4,15 +4,12 @@ const productos = []
 const camposValidos = [false, false, false, false, false, false, false]
 
 const inputs = document.querySelectorAll('input')
-// console.log(inputs);
 
 const form = document.querySelector('form')
-// console.log(form);
 
 const button = document.querySelector('button')
-// console.log(button);
-button.disabled = true
 
+button.disabled = true
 
 //Mostrar u ocultar mensaje
 const setCustomValidityJS = (mensaje, index) => {
@@ -39,7 +36,7 @@ const algunCampoValido = () => {
 
 //Validar campos
 const validar = (valor, validador, index) => {
-    if (!validador.test(valor)){
+    if (!validador.test(valor)) {
         setCustomValidityJS('Este campo no es válido', index) //arrayMensajes[index] se puede crear en la matriz un array mas para customizar el mensaje por el campo
         camposValidos[index] = false // va a ser un array con la misma cantidad de elementos que tiene nuestro formulario
         button.disabled = true // hasta que la persona no agregue, no se puede presionar el button 
@@ -87,7 +84,6 @@ form.addEventListener('submit', (e) => {
 
     //borrar todos los inputs para que el usuario no tenga que borrar 
     inputs.forEach(input => input.value = '')
-    console.log(producto);
 
     // agregar productos
     productos.push(producto)
@@ -95,7 +91,8 @@ form.addEventListener('submit', (e) => {
     //desactivar button
     button.disabled = true
 
-    renderProdsObjetos()
+    // renderProdsObjetos()
+    renderProdsTemplateString()
 })
 
 
@@ -104,16 +101,46 @@ const renderProdsObjetos = () => {
     let html = ''
     for (let i = 0; i < productos.length; i++) {
         html += `<p>${JSON.stringify(productos[i])}</p>`
-        
     }
 
     document.getElementById('listadoProductos').innerHTML = html
-
 }
-
 
 //Render de las filas de la tabla
 const renderProdsTemplateString = () => {
+    let html = ''
+    html += `<table>`
 
+    html += `
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Marca</th>
+        <th>Categoría</th>
+        <th>Detalles</th>
+        <th>Foto</th>
+        <th>Envío</th>
+    </tr>
+    `
+    for (let i = 0; i < productos.length; i++) {
+        let producto = productos[i]
+
+        html += `
+        <tr>
+            <th>${producto.nombre}</th>
+            <th>${producto.precio}</th>
+            <th>${producto.stock}</th>
+            <th>${producto.marca}</th>
+            <th>${producto.categoria}</th>
+            <th>${producto.detalles}</th>
+            <th>${producto.foto}</th>
+            <th>${producto.envio}</th>
+        </tr>
+        `
+    }
+    html += '</table>'
+
+    document.getElementById('listadoProductos').innerHTML = html
 }
 
