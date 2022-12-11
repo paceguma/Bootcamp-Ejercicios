@@ -56,6 +56,7 @@ const regExpValidar = [
     /^.+$/         //foto
 ]
 
+//Render de plantilla
 const renderProds = () => {
     const xhr = new XMLHttpRequest()
     xhr.open('get', 'plantillas/listado.hbs')
@@ -66,7 +67,7 @@ const renderProds = () => {
 
             let template = Handlebars.compile(plantillaHbs)
             // console.log(template);
-
+            
             let html = template({ productos: productos })
 
             document.getElementById('listadoProductos').innerHTML = html
@@ -75,6 +76,7 @@ const renderProds = () => {
     xhr.send()
 }
 
+//Producto ingresado en el formulario
 function leerProductoIngresado() {
     //tenemos pronto para incorporar a nuestra array de productos
     return {
@@ -96,19 +98,18 @@ function leerProductoIngresado() {
 //     { nombre: 'Enchufe', precio: '12', stock: '350', marca: 'Chin', categoria: 'Tech', envio: true, foto: 'https://images.unsplash.com/photo-1610056494052-6a4f83a8368c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80', detalles: 'Plastico' }
 // ]
 
+//Limpiamos los inputs del formulario
 function limpiarFormulario() {
-    inputs.forEach((input, index) => {
+    inputs.forEach(input => {
 
-        //borrar todos los inputs para que el usuario no tenga que borrar 
-        inputs.forEach(input => input.value = '')
-
-        input.addEventListener('input', () => {
-            validar(input.value, regExpValidar[index], index) // por cada elemento interactua y sabe cuantos elementos hay - vinculo el input.value de nombre con la regExp de nombre. 
-        })
+        //Borro todos los inputs
+        if (input.type != 'checkbox') input.value = ''
+        else if (input.type == 'checkbox') input.checked = false
     })
 
     //Button deshabilitado
     button.disabled = true
+
     camposValidos = [false, false, false, false, false, false, false]
 }
 
@@ -129,15 +130,20 @@ function initAlta() {
     //Permite inicializar los campos
     const camposValidos = [false, false, false, false, false, false, false]
 
+    inputs.forEach((input, index) => {
+        if(input.type != 'checkbox'){
+            input.addEventListener('input', () => {
+                validar(input.ariaValueMax, regExpValidar[index], index)
+            })
+        }
+    })
+
     form.addEventListener('submit', (e) => {
         e.preventDefault()
 
-        // agregar productos
-        productos.push(producto)
-
-        renderProds()
+        // guardarProducto()
     })
 
-    renderProds()
+    obtenerProductos()
 }
 
