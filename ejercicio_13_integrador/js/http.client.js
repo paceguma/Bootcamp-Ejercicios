@@ -1,9 +1,12 @@
-//Peticion async
+//Peticion async - es la que trae nuestros archivos
 
 //GET
 async function get(url, id) {
     try {
-        const respuesta = await fetch(url + (id || ''), { method: 'get' })
+        //mockapi.com/22323/id
+        const respuesta = await fetch(url + (id || ''), { 
+            method: 'get' 
+        })
         const resultado = await respuesta.json()
         return resultado
     } catch (error) {

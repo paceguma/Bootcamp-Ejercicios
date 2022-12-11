@@ -100,9 +100,8 @@ function leerProductoIngresado() {
 
 //Limpiamos los inputs del formulario
 function limpiarFormulario() {
+    //Borro todos los inputs
     inputs.forEach(input => {
-
-        //Borro todos los inputs
         if (input.type != 'checkbox') input.value = ''
         else if (input.type == 'checkbox') input.checked = false
     })
@@ -127,21 +126,21 @@ function initAlta() {
     //Button deshabilitado
     button.disabled = true
 
+
     //Permite inicializar los campos
-    const camposValidos = [false, false, false, false, false, false, false]
+    camposValidos = [false, false, false, false, false, false, false]
 
     inputs.forEach((input, index) => {
         if(input.type != 'checkbox'){
             input.addEventListener('input', () => {
-                validar(input.ariaValueMax, regExpValidar[index], index)
+                validar(input.value, regExpValidar[index], index)
             })
         }
     })
 
     form.addEventListener('submit', (e) => {
         e.preventDefault()
-
-        // guardarProducto()
+        guardarProducto()
     })
 
     obtenerProductos()
