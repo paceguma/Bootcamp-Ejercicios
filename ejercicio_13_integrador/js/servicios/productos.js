@@ -3,7 +3,7 @@ class ProductoService {
 
     URL_PRODUCTOS = 'https://6395c6db90ac47c68073403d.mockapi.io/productos/' // OJO: barra
     //cuando tengo una porpiedad que le pertenecen a la clase usamos this
-    
+
     async obtenerProductosService() {
         let productos = await get(this.URL_PRODUCTOS)
         // console.log(productos);
@@ -28,3 +28,5 @@ class ProductoService {
         return productoBorrado
     }
 }
+
+const productoService = new ProductoService() //instancia del objeto

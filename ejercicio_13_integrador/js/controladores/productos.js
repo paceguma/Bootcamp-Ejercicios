@@ -1,6 +1,7 @@
 class ProductoController {
     constructor() {
-        //super()
+        //super() //*TODO: completar controlador.
+
     }
 
     //Aca vamos a tener los metodos que estuvimos haciendo:
@@ -41,7 +42,7 @@ class ProductoController {
     }
 
     //Button para borrar producto
-    async borrarProducto(id) {
+    async borrarProducto(id) { 
         // console.log('Borrar el producto')
 
         let productoBorrado = await borrarProductoService(id)
@@ -54,3 +55,5 @@ class ProductoController {
 
 
 }
+
+const ProductoController = new ProductoController()
