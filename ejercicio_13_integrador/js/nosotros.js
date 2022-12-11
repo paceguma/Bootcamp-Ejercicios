@@ -1,3 +1,3 @@
 function initNosotros(){
-    console.warn('initNosotros');
+    // console.warn('initNosotros');
 }

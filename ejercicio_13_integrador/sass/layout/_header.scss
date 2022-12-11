@@ -59,12 +59,10 @@
 
   &__nav-link:hover {
     color: var(--color-hover);
-    font-weight: bold;
   }
 
   &__nav-link:focus {
     color: var(--color-hover);
-    font-weight: bold;
   }
 
   @media (max-width: 768px) {

@@ -1,5 +1,5 @@
-function initCard() {
-    console.warn('initCard');
+function initInicio() {
+    // console.warn('initInicio');
 
     function Card(heading, description, image) {
         this.heading = heading;
@@ -57,7 +57,7 @@ function initCard() {
         card5
     ]
 
-    console.log(cards);
+    // console.log(cards);
 
 
     // card1.appendTo(elemCardContainer) 
@@ -66,8 +66,8 @@ function initCard() {
     // card4.appendTo(elemCardContainer) 
     // card5.appendTo(elemCardContainer) 
 
-    console.log(cards[0].heading);
-    console.log(cards[0].image);
+    // console.log(cards[0].heading);
+    // console.log(cards[0].image);
 
     // cards[0].appendTo(elemCardContainer)
     // cards[1].appendTo(elemCardContainer)

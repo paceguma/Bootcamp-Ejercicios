@@ -1,5 +1,5 @@
 function initAlta() {
-    console.warn('initAlta');
+    // console.warn('initAlta');
 
     const productos = [
         { nombre: 'reloj', precio: '12234', stock: '35', marca: 'Seico', categoria: 'Despertador', envio: true, foto: 'https://images.unsplash.com/photo-1585123334904-845d60e97b29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80', detalles: 'Analogico' },

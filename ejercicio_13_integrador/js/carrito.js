@@ -7,5 +7,3 @@ function initCarrito() {
         elemSectionCarrito.classList.toggle('section-carrito--visible')
     })
 }
-
-initCarrito() 
