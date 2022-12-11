@@ -45,13 +45,13 @@ class FormularioAlta {
     algunCampoValido() {
         // en el caso de que todos sean true quiere decir que los campos son validos entonces retorna false para que el button pase a activo
         let valido = // ver la tabla de verdad
-            camposValidos[0] &&
-            camposValidos[1] &&
-            camposValidos[2] &&
-            camposValidos[3] &&
-            camposValidos[4] &&
-            camposValidos[5] &&
-            camposValidos[6]
+            this.camposValidos[0] &&
+            this.camposValidos[1] &&
+            this.camposValidos[2] &&
+            this.camposValidos[3] &&
+            this.camposValidos[4] &&
+            this.camposValidos[5] &&
+            this.camposValidos[6]
         return !valido
     }
 
@@ -110,7 +110,7 @@ class FormularioAlta {
 //Render de plantilla
 const renderTablaAlta = (validos, productos) => {
     const xhr = new XMLHttpRequest()
-    xhr.open('get', 'plantillas/listado.hbs') //*TODO Revisar hbs
+    xhr.open('get', 'plantillas/listado.hbs') //*TODO Revisar hbs ---se puede usar fetch
     xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
             let plantillaHbs = xhr.response

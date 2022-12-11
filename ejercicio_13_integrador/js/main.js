@@ -1,22 +1,21 @@
-var elemSectionCarrito = document.getElementsByClassName('section-carrito')[0]
+var elemSectionCarrito = document.getElementsByClassName('section-carrito')[0] //*TODO: Revisar
 
-function start() {
+class Main {
     //De forma async va a cargar todas las plantillas dinamicamente
-    //Funcion helper:
-    //AJAX 
+    //Funcion helper:    //AJAX 
 
-    function ajax(url, metodo = 'get') {
+    ajax(url, metodo = 'get') {
         const xhr = new XMLHttpRequest()
         xhr.open(metodo, url)
         xhr.send()
         return xhr
     }
 
-    function getNombreArchivo(id) {
+    getNombreArchivo(id) { // id => alta
         return 'vistas/' + id + '.html'
     }
 
-    function marcarLink(id) {
+    marcarLink(id) {
         const links = document.querySelectorAll('header nav a')
         links.forEach(link => {
             if (link.id === id) link.classList.add('active')
@@ -24,7 +23,7 @@ function start() {
         })
     }
 
-    function initJS(id) {
+    initJS(id) {
         if (id === 'alta') {
             initAlta()
         } else if (id === 'inicio') {
@@ -35,6 +34,17 @@ function start() {
             initContacto()
         }
     }
+
+
+    
+}
+
+
+function start() {
+
+
+
+
 
     function cargarPlantilla(id) {
         let archivo = getNombreArchivo(id)
