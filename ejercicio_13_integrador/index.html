@@ -17,19 +17,19 @@
     <nav class="nav-bar">
       <ul class="nav-bar__nav-list">
         <li class="nav-bar__nav-item">
-          <a href="" class="nav-bar__nav-link">Inicio</a>
+          <a href="" id="inicio" class="nav-bar__nav-link">Inicio</a>
         </li>
 
         <li class="nav-bar__nav-item">
-          <a href="" class="nav-bar__nav-link">Alta</a>
+          <a href="" id="alta" class="nav-bar__nav-link">Alta</a>
         </li>
 
         <li class="nav-bar__nav-item">
-          <a href="" class="nav-bar__nav-link">Contacto</a>
+          <a href="" id="contacto" class="nav-bar__nav-link">Contacto</a>
         </li>
 
         <li class="nav-bar__nav-item">
-          <a href="" class="nav-bar__nav-link">Nosotros</a>
+          <a href="" id="nosotros" class="nav-bar__nav-link">Nosotros</a>
         </li>
       </ul>
     </nav>
@@ -54,24 +54,26 @@
       </div>
     </div>
   </header>
-  <!-- header -->
-  <main>
-    <div class="section-carrito"></div>
-    
-    <section class="section-cards">
+  <div class="section-carrito"></div>
 
-      <header class="section-cards__header">
-        <h1>Lorem ipsum dolor sit.</h1>
-        <p>se encontraron x productos</p>
-      </header>
-      <div class="cards-container" id="cardContainer"></div>
-    </section>
-  </main>
+  <main></main>
+  <footer></footer>
 
+  <!-- Codigo de librerias -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.js"></script>
 
-  <script src="js/main.js"></script>
+  <!-- Codigo de plantillas -->
+  <script src="js/alta.js"></script>
+  <script src="js/nosotros.js"></script>
+  <script src="js/contacto.js"></script>
+
+  <!-- Codigo del carrito -->
   <script src="js/card.js"></script>
   <script src="js/carrito.js"></script>
+
+  <!-- Codigo de arranque -->
+  <script src="js/main.js"></script>
+
 </body>
 
 </html>
