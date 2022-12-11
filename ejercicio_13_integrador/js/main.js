@@ -1,98 +1,89 @@
-var elemSectionCarrito = document.getElementsByClassName('section-carrito')[0] //*TODO: Revisar
+var elemSectionCarrito = document.getElementsByClassName("section-carrito")[0] //*TODO: Revisar
 
 class Main {
-    //De forma async va a cargar todas las plantillas dinamicamente
-    //Funcion helper:    //AJAX 
+  //De forma async va a cargar todas las plantillas dinamicamente
+  //Funcion helper:    //AJAX
 
-    ajax(url, metodo = 'get') {
-        const xhr = new XMLHttpRequest()
-        xhr.open(metodo, url)
-        xhr.send()
-        return xhr
+  async ajax(url, metodo = "get") {
+    try {
+      const respuesta = await fetch(url, { method: metodo })
+      const resultado = await respuesta.text()
+      return resultado
+    } catch (error) {
+      console.error("ERROR", error)
     }
+  }
 
-    getNombreArchivo(id) { // id => alta
-        return 'vistas/' + id + '.html'
+  getNombreArchivo(id) {
+    // id => alta
+    return "vistas/" + id + ".html"
+  }
+
+  marcarLink(id) {
+    const links = document.querySelectorAll("header nav a")
+    links.forEach((link) => {
+      if (link.id === id) link.classList.add("active")
+      else link.classList.remove("active")
+    })
+  }
+
+  initJS(id) {
+    if (id === "alta") {
+      initAlta()
+    } else if (id === "inicio") {
+      initInicio()
+    } else if (id === "nosotros") {
+      initNosotros()
+    } else if (id === "contacto") {
+      initContacto()
     }
+  }
 
-    marcarLink(id) {
-        const links = document.querySelectorAll('header nav a')
-        links.forEach(link => {
-            if (link.id === id) link.classList.add('active')
-            else link.classList.remove('active')
-        })
-    }
+  async cargarPlantilla(id) {
+    let archivo = this.getNombreArchivo(id)
+    let xhr = await this.ajax(archivo)
+    xhr.addEventListener("load", () => {
+      if (xhr.status === 200) {
+        let plantilla = xhr.response
 
-    initJS(id) {
-        if (id === 'alta') {
-            initAlta()
-        } else if (id === 'inicio') {
-            initInicio()
-        } else if (id === 'nosotros') {
-            initNosotros()
-        } else if (id === 'contacto') {
-            initContacto()
-        }
-    }
+        //Carga del codigo de la vista (HTML) de la plantilla
+        let main = document.querySelector("main")
+        main.innerHTML = plantilla
 
+        //Carga del codigo script JS de la plantilla
+        this.initJS(id)
+      }
+    })
+  }
 
-    
+  async cargarPlantillas() {
+    // Carga inicial de la vista determinada por la url visitada
+    let id = location.hash.slice(1) || "inicio" // hash: cortas el numeral #inicio => slice(1) => inicio // si no hay nada por default carga la de inicio - slice descarta el primer elemento
+    this.marcarLink(id)
+    await this.cargarPlantilla(id)
+
+    //Carga de cada uno de los contenidos segun la navegacion local
+    const links = document.querySelectorAll("header nav a") // vamos a seleccionar los 'a' de los headers
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault()
+        let id = link.id
+        location.hash = id
+      })
+    })
+
+    window.addEventListener("hashchange", async () => {
+      //Detecta cuando el hash cambia, cambia su url
+      let id = location.hash.slice(1) || "inicio"
+      this.marcarLink(id)
+      await this.cargarPlantilla(id)
+    })
+  }
+
+  async start() {
+    await cargarPlantillas()
+  }
 }
 
-
-function start() {
-
-
-
-
-
-    function cargarPlantilla(id) {
-        let archivo = getNombreArchivo(id)
-        let xhr = ajax(archivo)
-        // console.log('llegue');
-        xhr.addEventListener('load', () => {
-            if (xhr.status === 200) {
-                let plantilla = xhr.response
-
-                //Carga del codigo de la vista (HTML) de la plantilla
-
-                let main = document.querySelector('main')
-                main.innerHTML = plantilla
-
-                //Carga del codigo script JS de la plantilla
-                initJS(id)
-            }
-        })
-    }
-
-    const cargarPlantillas = () => {
-        // Carga inicial de la vista determinada por la url visitada
-        let id = location.hash.slice(1) || 'inicio' // hash: cortas el numeral #inicio => slice(1) => inicio // si no hay nada por default carga la de inicio - slice descarta el primer elemento
-        marcarLink(id)
-        cargarPlantilla(id)
-
-        //Carga de cada uno de los contenidos segun la navegacion local
-        const links = document.querySelectorAll('header nav a') // vamos a seleccionar los 'a' de los headers
-        // console.log(links);
-        links.forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault()
-
-                let id = link.id
-                // console.log(id);
-                location.hash = id
-            })
-        })
-        window.addEventListener('hashchange', () => {
-            //Detecta cuando el hash cambia, cambia su url
-            // console.log('cambia su url');
-
-            let id = location.hash.slice(1) || 'inicio'
-            marcarLink(id)
-            cargarPlantilla(id)
-        })
-    }
-    cargarPlantillas()
-}
-
-start()
+const main = new Main()
+main.start()
