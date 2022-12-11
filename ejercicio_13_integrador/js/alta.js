@@ -67,8 +67,13 @@ const renderProds = () => {
 
             let template = Handlebars.compile(plantillaHbs)
             // console.log(template);
-            
-            let html = template({ productos: productos })
+
+            let html = template(
+                {
+                    productos: productos,
+                    validos: !algunCampoValido()
+                }
+            )
 
             document.getElementById('listadoProductos').innerHTML = html
         }
@@ -131,7 +136,7 @@ function initAlta() {
     camposValidos = [false, false, false, false, false, false, false]
 
     inputs.forEach((input, index) => {
-        if(input.type != 'checkbox'){
+        if (input.type != 'checkbox') {
             input.addEventListener('input', () => {
                 validar(input.value, regExpValidar[index], index)
             })

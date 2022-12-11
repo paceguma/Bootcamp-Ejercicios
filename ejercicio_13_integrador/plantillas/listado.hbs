@@ -18,12 +18,22 @@
         <td>{{marca}}</td>
         <td>{{categoria}}</td>
         <td>{{detalles}}</td>
-        <td><img src= "{{foto}}" alt="{{nombre}}" style="display:block; margin:0 auto; width:50px"></td>
+        <td><img src="{{foto}}" alt="{{nombre}}" style="display:block; margin:0 auto; width:50px"></td>
         {{#if envio}}
-            <td>Si</td>
+        <td>Si</td>
         {{else}}
-            <td>No</td>
+        <td>No</td>
         {{/if}}
+        <td>
+            {{#if ../validos}}
+            <button onclick="actualizarProducto({{id}})">Actualizar</button>
+            {{else}}
+            <button disabled onclick="actualizarProducto({{id}})">Actualizar</button>
+        {{/if}}
+        </td>
+        <td>
+            <button onclick="borrarProducto({{id}})">Borrar</button>
+        </td>
     </tr>
     {{/each}}
 </table>
