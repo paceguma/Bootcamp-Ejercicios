@@ -1,56 +1,40 @@
-class ProductoController {
+class ProductoController extends ProductoModel{
     constructor() {
-        //super() //*TODO: completar controlador.
-
+        super()
+        this.guardarProducto = this.guardarProducto.bind(this)
     }
-
-    //Aca vamos a tener los metodos que estuvimos haciendo:
+    
     async obtenerProductos() {
-        productos = await obtenerProductosService()
-        renderProds()
+        this.productos = await productoService.obtenerProductosService()
+        return this.productos
     }
 
-    async guardarProducto() {
-        //leo el formulario
-        const producto = leerProductoIngresado()
-        //limpio el formulario porque ya no lo necesito porque ya lo guarde
-        limpiarFormulario()
-        // hago la peticion
-        const productoGuardado = await guardarProductoService(producto)
-        // console.log(productoGuardado);
-
-        productos.push(productoGuardado)
-
-        renderProds()
+    async guardarProducto(producto) {
+        const productoGuardado = await productoService.guardarProductoService(producto)
+        this.productos.push(productoGuardado)
+        renderTablaAlta(null, this.productos)
     }
 
     async actualizarProducto(id) {
-        console.log('Actualizar producto', id);
+        const producto = formularioAlta.leerProductoIngresado()
+        formularioAlta.limpiarFormulario()
 
-        const producto = leerProductoIngresado()
-        //ya tengo la info entonces borro el form:
-        limpiarFormulario()
-
-        const productoActualizado = await actualizarProductoService(id, producto)
-        // console.log(productoActualizado);
+        const productoActualizado = await productoService.actualizarProductoService(id, producto)
 
         //Buscar dentro de la base de datos el producto que quiero editar
-        const index = productos.findIndex(producto => producto.id == productoActualizado.id)
-        productos.splice(index, 1, productoActualizado)
+        const index = this.productos.findIndex(producto => producto.id == productoActualizado.id)
+        this.productos.splice(index, 1, productoActualizado)
 
-        renderProds()
+        renderTablaAlta(null, this.productos)
     }
 
     //Button para borrar producto
     async borrarProducto(id) { 
-        // console.log('Borrar el producto')
+        let productoBorrado = await productoService.borrarProductoService(id)
+        const index = this.productos.findIndex(producto => producto.id == productoBorrado.id)
+        this.productos.splice(index, 1)
 
-        let productoBorrado = await borrarProductoService(id)
-
-        const index = productos.findIndex(producto => producto.id == productoBorrado.id)
-        productos.splice(index, 1)
-
-        renderProds()
+        renderTablaAlta(null, this.productos)
     }
 
 

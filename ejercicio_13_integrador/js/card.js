@@ -1,5 +1,4 @@
 function initInicio() {
-  // console.warn('initInicio');
 
   function Card(heading, description, image) {
     this.heading = heading
@@ -24,17 +23,7 @@ function initInicio() {
       })
 
       card.innerHTML = `        
-        <article class="card__article">
-        <div class="card__image-container">
-            <img class="card__image" src=${image} alt=${heading}/>
-        </div>
-        <div class="card__content">
-            <h2 class="card__heading">${heading}</h2>
-            <div class="card__description">
-            <p>${description}</p>
-            </div>
-        </div>
-        </article>
+       
         `
       destinationElement.appendChild(card)
     }
@@ -71,20 +60,7 @@ function initInicio() {
 
   const cards = [card1, card2, card3, card4, card5]
 
-  // console.log(cards);
 
-  // card1.appendTo(elemCardContainer)
-  // card2.appendTo(elemCardContainer)
-  // card3.appendTo(elemCardContainer)
-  // card4.appendTo(elemCardContainer)
-  // card5.appendTo(elemCardContainer)
-
-  // console.log(cards[0].heading);
-  // console.log(cards[0].image);
-
-  // cards[0].appendTo(elemCardContainer)
-  // cards[1].appendTo(elemCardContainer)
-  // cards[2].appendTo(elemCardContainer)
 
   for (const unaCard of cards) {
     unaCard.appendTo(elemCardContainer)
