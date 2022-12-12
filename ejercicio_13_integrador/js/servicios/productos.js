@@ -5,26 +5,22 @@ class ProductoService {
     //cuando tengo una porpiedad que le pertenecen a la clase usamos this
 
     async obtenerProductosService() {
-        let productos = await get(this.URL_PRODUCTOS)
-        // console.log(productos);
+        let productos = await http.get(this.URL_PRODUCTOS) 
         return productos
     }
 
     async guardarProductoService(producto) {
-        const productoGuardado = await post(this.URL_PRODUCTOS, producto) // el dato seria producto
-        // console.log(productoGuardado);
+        const productoGuardado = await http.post(this.URL_PRODUCTOS, producto) // el dato seria producto
         return productoGuardado
     }
 
     async actualizarProductoService(id, producto) {
-        const productoActualizado = await put(this.URL_PRODUCTOS, id, producto)
-        // console.log(productoActualizado);
+        const productoActualizado = await http.put(this.URL_PRODUCTOS, id, producto)
         return productoActualizado
     }
 
     async borrarProductoService(id) {
-        const productoBorrado = await del(this.URL_PRODUCTOS, id)
-        // console.log(productoBorrado);
+        const productoBorrado = await http.del(this.URL_PRODUCTOS, id)
         return productoBorrado
     }
 }

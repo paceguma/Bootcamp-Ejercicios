@@ -41,19 +41,10 @@ class Main {
 
   async cargarPlantilla(id) {
     let archivo = this.getNombreArchivo(id)
-    let xhr = await this.ajax(archivo)
-    xhr.addEventListener("load", () => {
-      if (xhr.status === 200) {
-        let plantilla = xhr.response
-
-        //Carga del codigo de la vista (HTML) de la plantilla
-        let main = document.querySelector("main")
-        main.innerHTML = plantilla
-
-        //Carga del codigo script JS de la plantilla
-        this.initJS(id)
-      }
-    })
+    let plantilla = await this.ajax(archivo)
+    let main = document.querySelector("main")
+    main.innerHTML = plantilla
+    this.initJS(id)
   }
 
   async cargarPlantillas() {
@@ -81,7 +72,7 @@ class Main {
   }
 
   async start() {
-    await cargarPlantillas()
+    await this.cargarPlantillas()
   }
 }
 

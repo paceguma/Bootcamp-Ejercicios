@@ -15,8 +15,7 @@ function agregarCarrito() {
 }
 
 async function initInicio() {
-    console.warn("initInicio")
     const productos = await productoController.obtenerProductos()
     await renderPlantillaListado(productos)
-    document.querySelector(".section-cards__header-p").innerHTML = `Se encontraron ${productos.lenght} productos`
+    document.querySelector(".section-cards__header p").innerHTML = `Se encontraron ${productos.length} productos`
 }

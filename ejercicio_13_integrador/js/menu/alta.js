@@ -37,7 +37,7 @@ class FormularioAlta {
             e.preventDefault()
             const producto = this.leerProductoIngresado()
             this.limpiarFormulario()
-            if(guardarProducto)guardarProducto(producto)
+            if (guardarProducto) guardarProducto(producto)
         })
     }
 
@@ -110,7 +110,7 @@ class FormularioAlta {
 //Render de plantilla
 const renderTablaAlta = (validos, productos) => {
     const xhr = new XMLHttpRequest()
-    xhr.open('get', 'plantillas/listado.hbs') //*TODO Revisar hbs ---se puede usar fetch
+    xhr.open('get', 'plantillas/alta.hbs')
     xhr.addEventListener('load', () => {
         if (xhr.status === 200) {
             let plantillaHbs = xhr.response

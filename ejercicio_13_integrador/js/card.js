@@ -17,7 +17,7 @@ function initInicio() {
         let nuevoItemCarrito = document.createElement("div")
         nuevoItemCarrito.classList.add("carrito__item")
         nuevoItemCarrito.innerHTML = that.heading
-        console.log(nuevoItemCarrito)
+
 
         elemSectionCarrito.append(nuevoItemCarrito)
       })
