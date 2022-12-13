@@ -22,16 +22,17 @@ function initCarrito() {
     btnCarrito.addEventListener('click', async () => {
 
         mostrarCarrito = !mostrarCarrito
+
         try {
-            if (mostrarCarrito) {
+            if(mostrarCarrito) {
                 await renderTablaCarrito(carritoController.carrito)
             } else {
                 elemSectionCarrito.classList.remove('section-carrito--visible')
             }
-        } catch (error) {
-            console.error(error);
-        }
 
+        } catch (error) {
+            console.error(error)
+        }    
     })
 }
 initCarrito()

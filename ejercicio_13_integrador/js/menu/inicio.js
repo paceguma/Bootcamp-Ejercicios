@@ -10,8 +10,12 @@ async function renderPlantillaListado(listado) {
     }
 }
 
-function agregarCarrito() { 
-    
+function agregarCarrito(e, id, ref) {
+    e.preventDefault()
+    //Buscamos al objeto completo:
+    const producto = productoController.productos.find(producto => producto.id == id)
+    console.log(producto);
+    carritoController.agregarAlCarrito(producto)
 }
 
 async function initInicio() {

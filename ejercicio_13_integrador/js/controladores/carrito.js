@@ -1,35 +1,60 @@
-class CarritoController extends CarritoModel{
+class CarritoController extends CarritoModel {
 
-    constructor(){
+    constructor() {
         super()
+        
         try {
             //Buscar que hay en el LStorage
             this.carrito = JSON.parse(localStorage.getItem('carrito')) || []
         } catch (error) {
-            this.carrito =[]
+            this.carrito = []
             localStorage.setItem('carrito', this.carrito)
         }
 
     }
-    
-    elProductoEstaEnElCarrito(){
 
+    elProductoEstaEnElCarrito(producto) {
+        return this.carrito.filter(prod => prod.id == producto.id).length 
     }
 
-    obtenerProductoDeCarrito(){
-
+    obtenerProductoDeCarrito(producto) {
+        return this.carrito.find(prod => prod.id == producto.id)
     }
 
-    agregarAlCarrito(){
-
+    agregarAlCarrito(producto) {
+        console.log(producto);
+        if (!this.elProductoEstaEnElCarrito(producto)) {
+            producto.cantidad = 1
+            this.carrito.push(producto)
+        } else {
+            const productoDeCarrito = this.obtenerProductoDeCarrito(producto)
+            productoDeCarrito.cantidad++
+        }
+        localStorage.setItem('carrito', JSON.stringify(this.carrito))
     }
 
-    borrarProductoCarrito(){
-
+    async borrarProductoCarrito(id) {
+        try {
+            const index = this.carrito.findIndex(prod => prod.id == id)
+            this.carrito.splice(index, 1)
+            localStorage.setItem('carrito', JSON.stringify(this.carrito))
+            await renderTablaCarrito(this.carrito)
+        } catch (error) {
+            console.error(error);
+        }
     }
 
-    enviarCarrito(){
-
+    async enviarCarrito() {
+        try {
+            const elemSectionCarrito = document.getElementsByClassName('section-carrito')[0]
+            elemSectionCarrito.innerHTML = `<h2>Enviando Carrito</h2>`
+            await carritoService.guardarCarritoServicio(this.carrito)
+            this.carrito = []
+            localStorage.setItem('carrito', JSON.stringify(this.carrito))
+            elemSectionCarrito.innerHTML = `<h2>Enviando Carrito OKKK!</h2>`
+        } catch (error) {
+            console.error(error);
+        }
     }
 }
 

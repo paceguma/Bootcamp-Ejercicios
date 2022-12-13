@@ -1,4 +1,5 @@
 class ProductoController extends ProductoModel{
+    
     constructor() {
         super()
         this.guardarProducto = this.guardarProducto.bind(this)
