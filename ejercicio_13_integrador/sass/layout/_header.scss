@@ -6,11 +6,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height:20vh;
 
-  @media (max-width: 768px) {
-    & {
-      flex-direction: column-reverse;
-    }
+  // @media (max-width: 768px) {
+  //   & {
+  //     flex-direction: column-reverse;
+  //   }
+  // }
+  &__logo-container {
+    background-color: bisque;
+    width: 15em;
   }
 }
 
@@ -31,7 +36,7 @@
 **********************************************/
 
 .nav-bar {
-  order: 2;
+  // order: 2;
   display: flex;
   align-items: center;
 
@@ -112,17 +117,17 @@
 
   &__form-search {
     width: 40%;
-    padding: 0.5em 0;
+    padding: 0.4em 0;
     text-indent: 2.3em;
-    border-radius: 8px;
-    border: 0.2px solid var(--color-hover-grey);
+    border-radius: 2px;
+    border: 1px solid var(--color-hover-grey);
 
     &:hover{
-      outline: 1px solid var(--color-hover);
+      border: 1px solid var(--color-hover);
     }
 
     &:focus{
-      outline: 1px solid var(--color-hover);
+      border: 1px solid var(--color-hover);
     }
   }
 
@@ -136,7 +141,7 @@
 
   &__carrito-container {
     display: flex;
-    flex: 0 0 3em;
+    flex: 0 0 6em;
     justify-content: center;
     align-items: center;
 

@@ -2,10 +2,11 @@ class CarritoController extends CarritoModel {
 
     constructor() {
         super()
-        
+
         try {
             //Buscar que hay en el LStorage
             this.carrito = JSON.parse(localStorage.getItem('carrito')) || []
+            console.log(this.carrito);
         } catch (error) {
             this.carrito = []
             localStorage.setItem('carrito', this.carrito)
@@ -14,6 +15,7 @@ class CarritoController extends CarritoModel {
     }
 
     elProductoEstaEnElCarrito(producto) {
+        console.log(this.carrito);
         return this.carrito.filter(prod => prod.id == producto.id).length 
     }
 
