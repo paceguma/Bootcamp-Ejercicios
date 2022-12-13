@@ -3,12 +3,10 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;
-}
-
-body {
     box-sizing: border-box;
 }
+
+
 
 :root {
     --color-hover: rgb(91, 32, 17);

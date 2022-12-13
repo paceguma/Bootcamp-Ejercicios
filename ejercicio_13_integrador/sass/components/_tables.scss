@@ -1,0 +1,10 @@
+#listadoProductos{
+
+    & table{
+        width: 100%;
+
+        & tbody:first-child{
+            background-color: beige;
+        }
+    }
+}
