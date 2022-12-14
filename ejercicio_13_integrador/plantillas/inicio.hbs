@@ -1,6 +1,6 @@
 {{#if listado.length }}
 {{#each listado}}
-<a href="https://sony.com" class="card" onclick="agregarCarrito(event,'{{id}}',this)">
+<a href="#" class="card" >
     <article class="card__article">
         <div class="card__image-container">
             <img class="card__image" src="{{foto}}" alt="{{nombre}}" />
@@ -12,7 +12,7 @@
             </div>
         </div>
     </article>
-    <div class="card__ver-producto">
+    <div class="card__ver-producto" onclick="agregarCarrito(event,'{{id}}',this)">
         <span class="material-symbols-outlined">shopping_cart</span>Agregar al Carrito</div>
 </a>
 {{/each}}

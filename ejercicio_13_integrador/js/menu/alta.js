@@ -17,8 +17,8 @@ class FormularioAlta {
 
     constructor(renderTablaAlta, guardarProducto) {
         //Llamo a las propiedades
-        this.inputs = document.querySelectorAll('main form input')
-        this.form = document.querySelector('main form')
+        this.inputs = document.querySelectorAll('.container-alta form input')
+        this.form = document.querySelector('.container-alta form')
         this.button = document.querySelector('#btnAgregarAlCarrito')
         // console.log(this.inputs, this.form, this.button);
         
@@ -73,7 +73,7 @@ class FormularioAlta {
     }
     //Mostrar u ocultar mensaje
     setCustomValidityJS(mensaje, index) {
-        let divs = document.querySelectorAll('form div')
+        let divs = document.querySelectorAll('.container-alta form div')
         divs[index].innerHTML = mensaje
         divs[index].style.display = mensaje ? 'block' : 'none'
     }
@@ -118,7 +118,7 @@ const renderTablaAlta = (validos, productos) => {
             let template = Handlebars.compile(plantillaHbs)
             let html = template({ productos, validos })
             document.getElementById('listadoProductos').innerHTML = html
-            console.log(html);
+            // console.log(html);
         }
     })
     xhr.send()

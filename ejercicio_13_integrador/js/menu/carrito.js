@@ -10,6 +10,7 @@ async function renderTablaCarrito(carrito) {
         const html = template({ carrito })
         elemSectionCarrito.innerHTML = html
         elemSectionCarrito.classList.add('section-carrito--visible')
+        // console.log(elemSectionCarrito);
     } catch (error) {
         console.error(error);
     }

@@ -1,3 +1,6 @@
+
+
+
 class CarritoController extends CarritoModel {
 
     constructor() {
@@ -6,7 +9,7 @@ class CarritoController extends CarritoModel {
         try {
             //Buscar que hay en el LStorage
             this.carrito = JSON.parse(localStorage.getItem('carrito')) || []
-            console.log(this.carrito);
+            // console.log(this.carrito);
         } catch (error) {
             this.carrito = []
             localStorage.setItem('carrito', this.carrito)
@@ -24,7 +27,7 @@ class CarritoController extends CarritoModel {
     }
 
     agregarAlCarrito(producto) {
-        console.log(producto);
+        // console.log(producto);
         if (!this.elProductoEstaEnElCarrito(producto)) {
             producto.cantidad = 1
             this.carrito.push(producto)
@@ -51,13 +54,26 @@ class CarritoController extends CarritoModel {
             const elemSectionCarrito = document.getElementsByClassName('section-carrito')[0]
             elemSectionCarrito.innerHTML = `<h2>Enviando Carrito</h2>`
             await carritoService.guardarCarritoServicio(this.carrito)
+            //una vez que enviamos los productos limpiamos el carrito
             this.carrito = []
+            //el localStorage solo guarda strings:
             localStorage.setItem('carrito', JSON.stringify(this.carrito))
             elemSectionCarrito.innerHTML = `<h2>Enviando Carrito OKKK!</h2>`
         } catch (error) {
             console.error(error);
         }
     }
+
+    cerrarContainerCarrito(){
+        const elemSectionCarrito = document.getElementsByClassName('section-carrito')[0]
+        const cerrarContainerCarrito = document.getElementsByClassName('btnCerrarContainerCarrito')[0]
+        cerrarContainerCarrito.addEventListener('click', () => {
+            elemSectionCarrito.classList.remove('section-carrito--visible')
+        })
+        // console.log(cerrarContainerCarrito);
+    }
 }
 
 const carritoController = new CarritoController()
+
+

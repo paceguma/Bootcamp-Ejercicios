@@ -1,4 +1,4 @@
-var elemSectionCarrito = document.getElementsByClassName("section-carrito")[0] //*TODO: Revisar
+// var elemSectionCarrito = document.getElementsByClassName("section-carrito")[0] //*TODO: Revisar
 
 class Main {
   //De forma async va a cargar todas las plantillas dinamicamente

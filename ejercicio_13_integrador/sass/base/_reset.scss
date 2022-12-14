@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     position: relative;
     height: 100vh;
 }
@@ -14,25 +14,55 @@ body{
 
 :root {
     --color-hover: rgb(91, 32, 17);
-    --color-hover-grey:  rgb(147, 147, 147);
+    --color-hover-grey: rgb(147, 147, 147);
     --color-a-default: rgb(33, 33, 33);
+
+    //BTN
     --bgc-agregarAlCarrito: #ff9a3b;
+
+
+    //BODY
+    --bgc-body-default: rgb(252, 248, 248);
+
+
+    //CARD
+    --bgc-card-default: rgb(252, 230, 230);
+
+
+    //TABLES
+    --bgc-tables-default: rgb(253, 250, 250);
+    --bgc-tables-tr-hover: rgb(250, 236, 236);
+
+
+    //COLOR DEFAULT
+    --bgc-color-brown-default: rgb(91, 32, 17);
+    --bgc-color-brown-hover: rgb(65, 21, 11);
 }
 
-input{
+input {
     height: 2rem;
 }
 
-table{
-    display: block;
+a{
+    text-decoration: none;
+}
+
+button {
+    padding: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+
+    &.btn-icon {
+        border: none;
+        background-color: transparent;
+    }
+
+    &:hover {
+        color: var(--color-hover);
+    }
 }
 
 
-button{
-    padding: 8px;
-    font-size: 1rem;
-    // background-color: var(--color-hover);
-    // border-radius: 4px;
-    // color: white ;
-    // border: none;
+table {
+    overflow: scroll;
 }
