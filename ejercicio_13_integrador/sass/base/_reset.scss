@@ -6,10 +6,33 @@
     box-sizing: border-box;
 }
 
+body{
+    position: relative;
+    height: 100vh;
+}
 
 
 :root {
     --color-hover: rgb(91, 32, 17);
     --color-hover-grey:  rgb(147, 147, 147);
     --color-a-default: rgb(33, 33, 33);
+    --bgc-agregarAlCarrito: #ff9a3b;
+}
+
+input{
+    height: 2rem;
+}
+
+table{
+    display: block;
+}
+
+
+button{
+    padding: 8px;
+    font-size: 1rem;
+    // background-color: var(--color-hover);
+    // border-radius: 4px;
+    // color: white ;
+    // border: none;
 }

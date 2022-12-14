@@ -1,6 +1,8 @@
-{{#if carrito.length }}
-    <button class="btn__enviarCarrito" onclick="carritoController.enviarCarrito()">Enviar</button>
-    <table>
+{{#if carrito.length}}
+<div class="sidebar__icon-exit"><span class="material-symbols-outlined">cancel</span></div>
+<h2 class="sidebar__carrito-title">Artículos</h2>
+<div class="sidebar__carrito-container-fluid">
+    <table class="sidebar__carrito-container">
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
@@ -10,28 +12,35 @@
             <th>Envio</th>
             <th>Acción</th>
         </tr>
-            {{!-- carrito es un array de elementos --}}
+        {{! carrito es un array de elementos }}
         {{#each carrito}}
         <tr>
             <td>{{nombre}}</td>
             <td>{{precio}}</td>
             <td>{{marca}}</td>
             <td>
-                <img style="display:block; margin: 0 auto;" src="{{imagen}}" width="50" alt="{{nombre}}">
+                <img style="display:block; margin: 0 auto;" src="{{imagen}}" width="50" alt="{{nombre}}" />
             </td>
             <td>{{cantidad}}</td>
             {{#if envio}}
-                <td>Si</td>
+            <td>Si</td>
             {{else}}
-                <td>No</td>
+            <td>No</td>
             {{/if}}
             <td>
-                <button onclick="carritoController.borrarProductoCarrito('{{id}}')">borrar</button>
+                <button class="btn-icon" onclick="carritoController.borrarProductoCarrito('{{id}}')"><span
+                        class="material-symbols-outlined">
+                        delete
+                    </span></button>
             </td>
         </tr>
-         {{/each}}
+        {{/each}}
     </table>
-{{else}}
+</div>
+<div class="sidebar__carrito-comprar">
+    <button class="btn__enviarCarrito" onclick="carritoController.enviarCarrito()">Enviar</button>
+    {{else}}
     <h2>El carrito está vacío</h2>
-{{/if}}
+</div>
 
+{{/if}}

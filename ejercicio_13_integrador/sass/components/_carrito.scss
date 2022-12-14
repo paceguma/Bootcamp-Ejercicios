@@ -1,15 +1,19 @@
 .section-carrito{
     display: none;
-    position: fixed;
+    position: absolute;
     background-color: #f1f2f3;
-    z-index: 1;
-    top: 150px;
-    left: 150px;
-    right: 150px;
-    bottom: 150px;
+    z-index: 10;
+    min-width: 30vw;
+    height: 100vh;
+    top: 0;
+    // top: 150px;
+    // left: 150px;
+    // right: 150px;
+    // bottom: 150px;
     box-shadow: .3em .3em 10em .3em rgba(0,0,0,1); 
     
     &--visible{
         display: block;
+        transition: all 0.5s ease;
     }
 }

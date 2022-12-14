@@ -36,15 +36,19 @@
     </nav>
     <div class="search-bar">
       <form action="" class="search-bar__form-container">
-        <label for="busqueda" class="search-bar__form-label"><span class="material-symbols-outlined">
-            search
+        <label for="busqueda" class="search-bar__form-label"><span class="material-symbols-outlined"> search
           </span></label>
         <input type="search" class="search-bar__form-search" id="busqueda" />
         <input type="submit" value="Buscar" class="search-bar__form-submit" />
       </form>
-      <div class="search-bar__carrito-container"><span class="material-symbols-outlined">
-          storefront
-        </span></div>
+      <div class="search-bar__form-container-icon">
+        <div class="search-bar__carrito-container">
+          <span class="material-symbols-outlined"> storefront </span>
+        </div>
+        <div class="search-bar__profile-container">
+          <span class="material-symbols-outlined"> person </span>
+        </div>
+      </div>
       <div class="menu-toggle">
         <label for="menu" class="menu-toggle__label">
           <span class="menu-toggle__top-bread"></span>
@@ -86,7 +90,6 @@
 
   <!-- Codigo de arranque -->
   <script src="js/main.js"></script>
-
 </body>
 
 </html>
