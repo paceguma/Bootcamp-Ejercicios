@@ -19,8 +19,9 @@ class FormularioAlta {
         //Llamo a las propiedades
         this.inputs = document.querySelectorAll('main form input')
         this.form = document.querySelector('main form')
-        this.button = document.querySelector('main form button')
-
+        this.button = document.querySelector('#btnAgregarAlCarrito')
+        // console.log(this.inputs, this.form, this.button);
+        
         //Button deshabilitado
         this.button.disabled = true
 
@@ -117,6 +118,7 @@ const renderTablaAlta = (validos, productos) => {
             let template = Handlebars.compile(plantillaHbs)
             let html = template({ productos, validos })
             document.getElementById('listadoProductos').innerHTML = html
+            console.log(html);
         }
     })
     xhr.send()

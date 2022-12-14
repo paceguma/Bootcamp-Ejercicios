@@ -1,12 +1,13 @@
-#listadoProductos {
-  & table {
-    width: 100%;
+// #listadoProductos {
+//   & table {
+//     width: 100%;
+//     border-collapse:collapse ;
 
-    & tbody:first-child {
-      background-color: beige;
-    }
-  }
-}
+//     & tbody:first-child {
+//       // background-color: beige;
+//     }
+//   }
+// }
 
 .sidebar {
   &__icon-exit {
