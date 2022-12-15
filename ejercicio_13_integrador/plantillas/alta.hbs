@@ -26,6 +26,7 @@
         {{/if}}
         <td>
             {{#if ../validos}}
+            {{!-- Si validos llega con info se actualiza sino no --}}
             <button onclick="productoController.actualizarProducto('{{id}}')">Actualizar</button>
             {{else}}
             <button disabled onclick="productoController.actualizarProducto('{{id}}')">Actualizar</button>
