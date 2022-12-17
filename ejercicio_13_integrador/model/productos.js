@@ -1,52 +1,21 @@
-const mongoose = require("mongoose")
+// const mongo  = require('mongoose');
+const ProductoModelMongoDB = require('./productosMongoDb')
 
-//Esquema del doc producto
+class ProductoModel{
 
-const productoSchema = mongoose.Schema({
-  nombre: String,
-  precio: Number,
-  stock: Number,
-  marca: String,
-  categoria: String,
-  detalles: String,
-  foto: String,
-  envio: Boolean
-})
-
-
-//Modelo del doc almacenado en una coleccion 
-const ProductoModel = mongoose.model('productos', productoSchema)
-
-//Conexion a la base de datos
-class ProductoModelMongoDB {
-   async conectarDB(){
-    try {
-      await mongoose.connect(process.env.URI_MONGODB_LOCAL)
-      console.log(`Base de datos conectada`)
-    } catch (error) {
-      console.error(`MongoDB error al conectar ${error}`);
+    static get(tipo){ // no necesita instanciarlo, porque es estatico
+        switch (tipo) {
+            case 'MONGODB':
+                console.log('Persistencia en MongoDB(productos');
+                const mongodb = new ProductoModelMongoDB()
+                mongodb.conectarDB()
+                return mongodb
+        
+            default:
+                console.log('No paso');
+                break;
+        }
     }
-  }
-
-  async crearProducto(producto){
-
-  }
-
-  async leerProductos(){
-
-  }
-
-  async leerProducto(){
-
-  }
-
-  async actualizarProducto(id, producto){
-
-  }
-
-  async borrarProducto(id){
-
-  }
 }
 
-module.exports = ProductoModelMongoDB
+module.exports = ProductoModel

@@ -11,7 +11,7 @@ routerProductos.post('/', controlador.guardarProducto)
 
 
 //PUT (UPDATE)
-routerProductos.put('/:id?', controlador.actualizarProducto)
+routerProductos.put('/:id', controlador.actualizarProducto)
 
 //DELETE
 routerProductos.delete('/:id', controlador.borrarProducto)
