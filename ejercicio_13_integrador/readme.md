@@ -20,7 +20,6 @@ categoria: 'Cat1',
 detalles: 'Det1',
 foto: 'foto.jpg',
 envio: true
-
 }
 )
 

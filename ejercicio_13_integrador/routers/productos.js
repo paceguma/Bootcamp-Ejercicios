@@ -9,7 +9,6 @@ routerProductos.get('/:id?', controlador.obtenerProductos)
 //POST (CREATE)
 routerProductos.post('/', controlador.guardarProducto)
 
-
 //PUT (UPDATE)
 routerProductos.put('/:id', controlador.actualizarProducto)
 

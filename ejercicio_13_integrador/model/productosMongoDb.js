@@ -22,8 +22,8 @@ class ProductoModelMongoDB {
     async conectarDB() {
 
     try {
-      // await mongoose.connect(process.env.URI_MONGODB_REMOTA)
-      await mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0')
+      mongoose.set("strictQuery", false);
+      await mongoose.connect('mongodb://127.0.0.1:27017/bcecommerce')
       console.log(`Base de datos conectada`)
 
     } catch (error) {
@@ -37,7 +37,7 @@ class ProductoModelMongoDB {
       await productoGuardado.save()
       return productoGuardado
     } catch (error) {
-      console.error(`Eror en el crearProducto ${error}`)
+      console.error(`Error en el crearProducto ${error}`)
     }
   }
 
@@ -47,7 +47,8 @@ class ProductoModelMongoDB {
   }
 
   async leerProducto(id) {
-    const producto = await ProductoModel.findById(id)
+    const producto = await ProductoModel.findOne({_id:id})
+    console.log(producto);
     return producto
   }
 
