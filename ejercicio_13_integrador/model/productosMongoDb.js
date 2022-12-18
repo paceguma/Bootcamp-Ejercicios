@@ -18,6 +18,7 @@ const ProductoModel = mongoose.model("productos", productoSchema)
 
 //Conexion a la base de datos
 class ProductoModelMongoDB {
+  
   async conectarDB() {
     try {
       mongoose.set("strictQuery", false)

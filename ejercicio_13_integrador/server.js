@@ -1,5 +1,8 @@
 const express = require("express")
 const routerProductos = require("./routers/productos")
+const routerCarrito = require("./routers/carrito")
+const routerUpload = require("./routers/upload")
+
 const app = express()
 require("dotenv").config() //variables de entorno
 
@@ -11,6 +14,8 @@ app.use(express.json())
 
 //Middleware de routeo de mi app
 app.use('/api/productos', routerProductos) //otro nivel porque sino este middle no afecta a estas rutas
+app.use('/api/carrito', routerCarrito) //otro nivel porque sino este middle no afecta a estas rutas
+app.use('/api/upload', routerUpload) //otro nivel porque sino este middle no afecta a estas rutas
 
 app.use("/", (req, res) => {
   res.send("probando")
