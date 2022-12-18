@@ -3,6 +3,7 @@
 const service = require('../service/productos')
 
 const obtenerProductos = async (req, res) => {
+  console.log('entramos a la ruta')
   let id = req.params.id
   // console.log(id)
   if (id) {
@@ -16,7 +17,7 @@ const obtenerProductos = async (req, res) => {
 
 const guardarProducto = async (req, res) => {
   const producto = req.body
-  console.log('controller', producto);
+  // console.log('controller', producto);
   const productoGuardado = await service.guardarProducto(producto)
   res.status(201).json(productoGuardado)
 }

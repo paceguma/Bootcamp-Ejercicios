@@ -19,6 +19,9 @@ const ProductoModel = mongoose.model("productos", productoSchema)
 //Conexion a la base de datos
 class ProductoModelMongoDB {
   
+  pk = '_id'
+
+  
   async conectarDB() {
     try {
       mongoose.set("strictQuery", false)
@@ -30,11 +33,32 @@ class ProductoModelMongoDB {
     }
   }
 
+
+  genIdKey(obj) { // array o un obj
+    //console.log(obj)
+    if(Array.isArray(obj)) { // true o false
+        // Sacarle el guión al ID de los documentos.
+        for(let i=0; i<obj.length; i++) {
+            obj[i].id = obj[i][this.pk] // this._id => this.id
+        }
+    }
+    else {
+        obj.id = obj[this.pk] // this._id => this.id
+    }
+
+    return obj
+}
+
   async crearProducto(producto) {
     try {
       const productoGuardado = new ProductoModel(producto)
       await productoGuardado.save()
-      return productoGuardado
+
+
+      const productos = await ProductoModel.find({}).lean() // lean() => convertir el obj mongoose en un obj de vanilla js
+      const productoGuardados = productos[productos.length-1] 
+      return this.genIdKey(productoGuardados) // {_id: ,..., } => { id: ,..., }
+
     } catch (error) {
       console.error(`Error en el crearProducto ${error}`)
     }
@@ -42,19 +66,21 @@ class ProductoModelMongoDB {
 
   async leerProductos() {
     try {
-      const productos = await ProductoModel.find({})
-      return productos
+      const productos = await ProductoModel.find({}).lean()
+      return this.genIdKey(productos)
     } catch (error) {
       console.error(`Error al leer los productos, ${error}`);
+      return []
     }
   }
 
   async leerProducto(id) {
     try {
-      const producto = await ProductoModel.findOne({ _id: id })
-      return producto
+      const producto = await ProductoModel.findOne({ _id: id }).lean()
+      return this.genIdKey(producto)
     } catch (error) {
       console.error(`Error al leer el producto ${error}`);
+      return {}
     }
   }
 
@@ -62,20 +88,22 @@ class ProductoModelMongoDB {
     try {
       const resultado = await ProductoModel.updateOne({ _id: id }, { $set: producto })
 
-      const productoActualizado = await ProductoModel.findById(id)
+      const productoActualizado = await ProductoModel.findById(id).lean()
 
-      return { resultado, productoActualizado }
+      return this.genIdKey(productoActualizado)
     } catch (error) {
       console.error(`Error al actualizar un producto, ${error}`);
+      return {}
     }
   }
 
   async borrarProducto(id) {
     try {
-      await ProductoModel.findByIdAndDelete(id)
-      return "Ok delete producto"
+        const productoBorrado = await ProductoModel.findByIdAndDelete(id)
+        return this.genIdKey(productoBorrado)
     } catch (error) {
       console.error(`Error al borrar un producto ${error}`)
+      return {}
     }
   }
 }

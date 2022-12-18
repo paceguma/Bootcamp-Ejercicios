@@ -1,10 +1,12 @@
 const express = require("express")
+const bodyParser = require("body-parser");
 const routerProductos = require("./routers/productos")
 const routerCarrito = require("./routers/carrito")
 const routerUpload = require("./routers/upload")
 
 const app = express()
 require("dotenv").config() //variables de entorno
+app.use(bodyParser.json())
 
 // Middleware (use oda mi app es afectada)
 app.use(express.static("public"))

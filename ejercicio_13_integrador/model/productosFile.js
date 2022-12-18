@@ -60,7 +60,6 @@ class ProductoModelFile {
 
   async borrarProducto(id) {
     const productos = await this.leerArchivoProductos()
-
     const index = productos.findIndex((producto) => producto.id == id)
     const producto = productos.splice(index, 1)[0]
 
