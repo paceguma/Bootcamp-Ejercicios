@@ -3,7 +3,7 @@
 const ProductoModel = require("../model/productos");
 
 //Modelo instanciado
-const model = ProductoModel.get('MONGODB')
+const model = ProductoModel.get(process.env.PERSISTENCIA || 'MONGODB')
 
 const obtenerProducto = async id => {
     let producto = await model.leerProducto(id)

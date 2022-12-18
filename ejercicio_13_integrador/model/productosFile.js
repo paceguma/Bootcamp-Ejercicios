@@ -8,7 +8,7 @@ class ProductoModelFile {
     try {
       let leido = await fs.promises.readFile(this.nombreArchivo, "utf-8")
       let productos = await JSON.parse(leido)
-      console.log(leido, 'soy ledio')
+      // console.log(leido, 'soy ledio')
       return productos
     } catch (error) {
       console.log(error)
