@@ -10,7 +10,7 @@ const productoSchema = mongoose.Schema({
   categoria: String,
   detalles: String,
   foto: String,
-  envio: Boolean
+  envio: Boolean,
 })
 
 //Modelo del doc almacenado en una coleccion
@@ -18,14 +18,11 @@ const ProductoModel = mongoose.model("productos", productoSchema)
 
 //Conexion a la base de datos
 class ProductoModelMongoDB {
-    
-    async conectarDB() {
-
+  async conectarDB() {
     try {
-      mongoose.set("strictQuery", false);
-      await mongoose.connect('mongodb://127.0.0.1:27017/bcecommerce')
+      mongoose.set("strictQuery", false)
+      await mongoose.connect("mongodb://127.0.0.1:27017/bcecommerce")
       console.log(`Base de datos conectada`)
-
     } catch (error) {
       console.error(`MongoDB error al conectar ${error}`)
     }
@@ -47,17 +44,30 @@ class ProductoModelMongoDB {
   }
 
   async leerProducto(id) {
-    const producto = await ProductoModel.findOne({_id:id})
-    console.log(producto);
+    const producto = await ProductoModel.findOne({ _id: id })
+    // console.log(producto);
     return producto
   }
 
   async actualizarProducto(id, producto) {
+    try {
+      const resultado = await ProductoModel.updateOne({_id:id}, {$set:producto})
 
+      const productoActualizado = await ProductoModel.findById(id)
+
+      return {resultado, productoActualizado}
+    } catch (error) {
+      console.error(`Error al actualizar un producto, ${error}`);
+    }
   }
 
   async borrarProducto(id) {
-
+    try {
+      await ProductoModel.findByIdAndDelete(id)
+      return "Ok delete producto"
+    } catch (error) {
+      console.error(`Error al borrar un producto ${error}`)
+    }
   }
 }
 

@@ -18,8 +18,20 @@ const guardarProducto = async (producto) => {
     return productoGuardado
 }
 
+const borrarProducto = async id => {
+    const productoBorrado = await model.borrarProducto(id)
+    return productoBorrado
+}
+
+const actualizarProducto = async (id, producto) => {
+    const productoActualizado = await model.actualizarProducto(id, producto)
+    return productoActualizado
+}
+
 module.exports = {
     obtenerProducto,
     obtenerProductos,
-    guardarProducto
+    guardarProducto,
+    borrarProducto,
+    actualizarProducto
 }
