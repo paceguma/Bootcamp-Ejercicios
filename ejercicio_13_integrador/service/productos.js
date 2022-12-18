@@ -16,7 +16,8 @@ const obtenerProductos = async () => {
 }
 
 const guardarProducto = async (producto) => {
-    const productoGuardado = await model.guardarProducto(producto)
+    console.log('desde guardar producto', producto );
+    const productoGuardado = await model.crearProducto(producto)
     return productoGuardado
 }
 

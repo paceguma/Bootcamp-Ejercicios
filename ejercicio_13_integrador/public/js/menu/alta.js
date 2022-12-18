@@ -2,7 +2,7 @@ class FormularioAlta {
     inputs = null
     form = null
     button = null
-    camposValidos = [false, false, false, false, false, false, false]
+    camposValidos = [false, false, false, false, false, false]
 
     //Todas las expresiones regulares de los campos
     regExpValidar = [
@@ -12,7 +12,6 @@ class FormularioAlta {
         /^.+$/,         //marca
         /^.+$/,         //categoria
         /^.+$/,         //detalles
-        /^.+$/         //foto
     ]
 
 
@@ -24,10 +23,11 @@ class FormularioAlta {
 
     constructor(renderTablaAlta, guardarProducto) {
         //Llamo a las propiedades
-        this.inputs = document.querySelectorAll('.container-alta form input')
+        this.inputs = document.querySelectorAll('.container-alta form .data-validation')
+        // console.log(this.inputs);
         this.form = document.querySelector('.container-alta form')
         this.button = document.querySelector('#btnAgregarAlCarrito')
-        // console.log(this.inputs, this.form, this.button);
+        // console.log(this.button);
 
         //Button deshabilitado
         this.button.disabled = true
@@ -103,8 +103,7 @@ class FormularioAlta {
             this.camposValidos[2] &&
             this.camposValidos[3] &&
             this.camposValidos[4] &&
-            this.camposValidos[5] &&
-            this.camposValidos[6]
+            this.camposValidos[5]
         return !valido
     }
 
@@ -125,7 +124,8 @@ class FormularioAlta {
     }
     //Mostrar u ocultar mensaje
     setCustomValidityJS(mensaje, index) {
-        let divs = document.querySelectorAll('.container-alta .form .mensaje-validacion')
+        let divs = document.querySelectorAll('.container-alta-form__container .mensaje-validacion')
+        // console.log(divs)
         divs[index].innerHTML = mensaje
         divs[index].style.display = mensaje ? 'block' : 'none'
     }
@@ -133,6 +133,7 @@ class FormularioAlta {
     //Producto ingresado en el formulario
     leerProductoIngresado() {
         //tenemos pronto para incorporar a nuestra array de productos
+        console.log(this.imagenSubida)
         return {
             nombre: this.inputs[0].value,
             precio: this.inputs[1].value,
@@ -140,8 +141,8 @@ class FormularioAlta {
             marca: this.inputs[3].value,
             categoria: this.inputs[4].value,
             detalles: this.inputs[5].value,
-            foto: this.imagenSubida ? `/uploads/${this.imagenSubida}` : '',
-            envio: this.inputs[7].checked
+            foto: this.imagenSubida ? `/uploads/${this.imagenSubida}`: '/uploads/sinimagen.jpg',
+            envio: this.inputs[6].checked
         }
     }
 
@@ -155,66 +156,65 @@ class FormularioAlta {
         //Button deshabilitado
         this.button.disabled = true
 
-        this.camposValidos = [false, false, false, false, false, false, false]
+        this.camposValidos = [false, false, false, false, false, false]
 
         const img = document.querySelector('#gallery img')
-        img.src= ''
+        img.src = ''
 
         this.initializeProgress()
         this.imagenSubida = ''
     }
 
 
-      /* -------------- drag and drop ------------------ */
-  initializeProgress() {
-    this.progressBar.value = 0
-  }
-
-  updateProgress(porcentaje) {
-    this.progressBar.value = porcentaje
-  }
-
-  previewFile(file) {
-    const reader = new FileReader() // https://developer.mozilla.org/es/docs/Web/API/FileReader
-    reader.readAsDataURL(file)
-    //reader.addEventListener('loadend', () => {})
-    reader.onloadend = function() {
-      const img = document.querySelector('#gallery img')
-      img.src = reader.result
+    /* -------------- drag and drop ------------------ */
+    initializeProgress() {
+        this.progressBar.value = 0
     }
-  }
 
-  handleFiles = files => {
-    const file = files[0]
-    this.initializeProgress()
-    this.uploadFile(file)
-    this.previewFile(file)
-  }
+    updateProgress(porcentaje) {
+        this.progressBar.value = porcentaje
+    }
 
-  uploadFile = file => {
-    const url = '/api/upload'
+    previewFile(file) {
+        const reader = new FileReader() 
+        reader.readAsDataURL(file)
+        reader.onloadend = function () {
+            const img = document.querySelector('#gallery img')
+            img.src = reader.result
+        }
+    }
 
-    const xhr = new XMLHttpRequest()
-    const formData = new FormData()
+    handleFiles = files => {
+        const file = files[0]
+        this.initializeProgress()
+        this.uploadFile(file)
+        this.previewFile(file)
+    }
 
-    xhr.open('POST', url)
+    uploadFile = file => {
+        const url = '/api/upload'
 
-    xhr.upload.addEventListener('progress', e => {
-      let porcentaje = (((e.loaded * 100.0) / e.total) || 100)
-      this.updateProgress(porcentaje)
-    })
+        const xhr = new XMLHttpRequest()
+        const formData = new FormData()
 
-    xhr.addEventListener('load', () => { 
-      if ( xhr.status === 200) {
-        const objImagen = JSON.parse(xhr.response) 
-        this.imagenSubida = objImagen.nombre
-      }
-    })
+        xhr.open('POST', url)
 
-    formData.append('foto', file)
-    xhr.send(formData)
+        xhr.upload.addEventListener('progress', e => {
+            let porcentaje = (((e.loaded * 100.0) / e.total) || 100)
+            this.updateProgress(porcentaje)
+        })
 
-  }
+        xhr.addEventListener('load', () => {
+            if (xhr.status === 200) {
+                const objImagen = JSON.parse(xhr.response)
+                this.imagenSubida = objImagen.nombre
+            }
+        })
+
+        formData.append('foto', file)
+        xhr.send(formData)
+
+    }
 
 }
 

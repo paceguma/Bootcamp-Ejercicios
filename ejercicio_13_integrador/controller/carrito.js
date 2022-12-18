@@ -8,7 +8,7 @@ const guardarCarrito = async (req, res) => {
     for(let item of carritoGuardado) {
         items.push(
             {
-                title: item.nombre,
+                title: item.nombre, 
                 unit_price: Number(item.precio),
                 quantity: Number(item.cantidad),
             }

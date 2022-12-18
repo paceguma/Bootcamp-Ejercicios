@@ -16,6 +16,7 @@ const obtenerProductos = async (req, res) => {
 
 const guardarProducto = async (req, res) => {
   const producto = req.body
+  console.log('controller', producto);
   const productoGuardado = await service.guardarProducto(producto)
   res.status(201).json(productoGuardado)
 }

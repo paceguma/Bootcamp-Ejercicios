@@ -18,7 +18,7 @@ app.use('/api/carrito', routerCarrito) //otro nivel porque sino este middle no a
 app.use('/api/upload', routerUpload) //otro nivel porque sino este middle no afecta a estas rutas
 
 app.use("/", (req, res) => {
-  res.send("probando")
+  res.send("Ruta invalida")
 })
 
 const PORT = process.env.PORT

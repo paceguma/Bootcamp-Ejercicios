@@ -3,6 +3,6 @@ const routerUpload = express.Router()
 const upload = require('../config/multer')
 const controlador = require('../controller/upload')
 
-routerUpload.post('/', upload.single('foto'), controlador.uploadImage)
+routerUpload.post('/', upload.single('foto'), controlador.uploadImagen)
 
 module.exports = routerUpload
