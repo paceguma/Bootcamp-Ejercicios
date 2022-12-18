@@ -1,8 +1,9 @@
 //Interfaz para acceder a los productos
 class ProductoService {
 
-    URL_PRODUCTOS = 'https://6395c6db90ac47c68073403d.mockapi.io/productos/' // OJO: barra
+    // URL_PRODUCTOS = 'https://6395c6db90ac47c68073403d.mockapi.io/productos/' // OJO: barra
     //cuando tengo una porpiedad que le pertenecen a la clase usamos this
+    URL_PRODUCTOS = '/api/productos/'
 
     async obtenerProductosService() {
         let productos = await http.get(this.URL_PRODUCTOS) 
