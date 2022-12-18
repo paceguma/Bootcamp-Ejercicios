@@ -39,23 +39,30 @@ class ProductoModelMongoDB {
   }
 
   async leerProductos() {
-    const productos = await ProductoModel.find({})
-    return productos
+    try {
+      const productos = await ProductoModel.find({})
+      return productos
+    } catch (error) {
+      console.error(`Error al leer los productos, ${error}`);
+    }
   }
 
   async leerProducto(id) {
-    const producto = await ProductoModel.findOne({ _id: id })
-    // console.log(producto);
-    return producto
+    try {
+      const producto = await ProductoModel.findOne({ _id: id })
+      return producto
+    } catch (error) {
+      console.error(`Error al leer el producto ${error}`);
+    }
   }
 
   async actualizarProducto(id, producto) {
     try {
-      const resultado = await ProductoModel.updateOne({_id:id}, {$set:producto})
+      const resultado = await ProductoModel.updateOne({ _id: id }, { $set: producto })
 
       const productoActualizado = await ProductoModel.findById(id)
 
-      return {resultado, productoActualizado}
+      return { resultado, productoActualizado }
     } catch (error) {
       console.error(`Error al actualizar un producto, ${error}`);
     }

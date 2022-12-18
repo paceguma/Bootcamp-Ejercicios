@@ -1,3 +1,5 @@
+// Service: Se encuentra entre el controlador y el modelo. Que tipo de persistencia vas a trabajar 
+
 const ProductoModel = require("../model/productos");
 
 //Modelo instanciado

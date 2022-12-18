@@ -1,3 +1,5 @@
+//Controladores: gestionan la info - quien lo muestra y a quien mostrarsela
+
 const service = require('../service/productos')
 
 const obtenerProductos = async (req, res) => {

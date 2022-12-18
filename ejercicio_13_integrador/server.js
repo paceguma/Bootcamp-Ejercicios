@@ -3,7 +3,7 @@ const routerProductos = require("./routers/productos")
 const app = express()
 require("dotenv").config() //variables de entorno
 
-// Middleware
+// Middleware (use oda mi app es afectada)
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
