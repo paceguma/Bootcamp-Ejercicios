@@ -15,13 +15,20 @@ class FormularioAlta {
         /^.+$/         //foto
     ]
 
+
+    /* --------------------------- drag and drop --------------------------- */
+    imagenSubida = ''
+    dropArea = null
+    progressBar = null
+    /* --------------------------- drag and drop --------------------------- */
+
     constructor(renderTablaAlta, guardarProducto) {
         //Llamo a las propiedades
         this.inputs = document.querySelectorAll('.container-alta form input')
         this.form = document.querySelector('.container-alta form')
         this.button = document.querySelector('#btnAgregarAlCarrito')
         // console.log(this.inputs, this.form, this.button);
-        
+
         //Button deshabilitado
         this.button.disabled = true
 
@@ -40,6 +47,51 @@ class FormularioAlta {
             this.limpiarFormulario()
             if (guardarProducto) guardarProducto(producto)
         })
+
+
+
+        /* --------------------------- drag and drop --------------------------- */
+        this.dropArea = document.getElementById('drop-area')
+        this.progressBar = document.getElementById('progress-bar')
+
+            // Para cancelar el evento automático del drag and drop
+            ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                this.dropArea.addEventListener(eventName, e => e.preventDefault())
+                document.body.addEventListener(eventName, e => e.preventDefault())
+            })
+
+            // Para remarcar la zona de drop al arrastrar una imagen dentro de ella
+            ;['dragenter', 'dragover'].forEach(eventName => {
+                this.dropArea.addEventListener(eventName, () => {
+                    this.dropArea.classList.add('highlight')
+                })
+            })
+
+            ;['dragleave', 'drop'].forEach(eventName => {
+                this.dropArea.addEventListener(eventName, () => {
+                    this.dropArea.classList.remove('highlight')
+                })
+            })
+
+        this.dropArea.addEventListener('drop', e => {
+            console.log(e)
+            const dataTransf = e.dataTransfer
+            const files = dataTransf.files
+
+            this.handleFiles(files)
+        })
+
+
+        const inputFoto = document.querySelector('#foto')
+
+        inputFoto.addEventListener('change', () => {
+            console.log('Cambió el input')
+
+            const files = inputFoto.files
+
+            this.handleFiles(files)
+        })
+
     }
 
     //Para comprobar la validez de los campos
@@ -73,7 +125,7 @@ class FormularioAlta {
     }
     //Mostrar u ocultar mensaje
     setCustomValidityJS(mensaje, index) {
-        let divs = document.querySelectorAll('.container-alta form div')
+        let divs = document.querySelectorAll('.container-alta .form .mensaje-validacion')
         divs[index].innerHTML = mensaje
         divs[index].style.display = mensaje ? 'block' : 'none'
     }
@@ -88,7 +140,7 @@ class FormularioAlta {
             marca: this.inputs[3].value,
             categoria: this.inputs[4].value,
             detalles: this.inputs[5].value,
-            foto: this.inputs[6].value,
+            foto: this.imagenSubida ? `/uploads/${this.imagenSubida}` : '',
             envio: this.inputs[7].checked
         }
     }
@@ -104,7 +156,65 @@ class FormularioAlta {
         this.button.disabled = true
 
         this.camposValidos = [false, false, false, false, false, false, false]
+
+        const img = document.querySelector('#gallery img')
+        img.src= ''
+
+        this.initializeProgress()
+        this.imagenSubida = ''
     }
+
+
+      /* -------------- drag and drop ------------------ */
+  initializeProgress() {
+    this.progressBar.value = 0
+  }
+
+  updateProgress(porcentaje) {
+    this.progressBar.value = porcentaje
+  }
+
+  previewFile(file) {
+    const reader = new FileReader() // https://developer.mozilla.org/es/docs/Web/API/FileReader
+    reader.readAsDataURL(file)
+    //reader.addEventListener('loadend', () => {})
+    reader.onloadend = function() {
+      const img = document.querySelector('#gallery img')
+      img.src = reader.result
+    }
+  }
+
+  handleFiles = files => {
+    const file = files[0]
+    this.initializeProgress()
+    this.uploadFile(file)
+    this.previewFile(file)
+  }
+
+  uploadFile = file => {
+    const url = '/api/upload'
+
+    const xhr = new XMLHttpRequest()
+    const formData = new FormData()
+
+    xhr.open('POST', url)
+
+    xhr.upload.addEventListener('progress', e => {
+      let porcentaje = (((e.loaded * 100.0) / e.total) || 100)
+      this.updateProgress(porcentaje)
+    })
+
+    xhr.addEventListener('load', () => { 
+      if ( xhr.status === 200) {
+        const objImagen = JSON.parse(xhr.response) 
+        this.imagenSubida = objImagen.nombre
+      }
+    })
+
+    formData.append('foto', file)
+    xhr.send(formData)
+
+  }
 
 }
 

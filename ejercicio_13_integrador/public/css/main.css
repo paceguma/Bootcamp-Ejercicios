@@ -362,29 +362,26 @@ p {
 }
 
 .container-alta {
-  padding: 2rem;
+  padding: 10px;
+  /* DROP AREA */
 }
-.container-alta-form__container {
-  margin-top: 2rem;
-  width: 50%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.container-alta h1, .container-alta h2 {
+  color: blue;
 }
-.container-alta-form__container div,
-.container-alta-form__container input {
+.container-alta div, .container-alta input {
   width: 300px;
+  display: block;
   margin-bottom: 1px;
   padding: 5px;
 }
 .container-alta button {
   display: block;
-  background-color: var(--color-hover);
+  margin-top: 20px;
+  width: 80px;
+  background-color: blue;
   color: white;
   cursor: pointer;
-  margin: 16px 0;
-  padding: 8px;
-  border-radius: 4px;
-  border: none;
+  margin-bottom: 10px;
 }
 .container-alta button:hover {
   background-color: blueviolet;
@@ -398,7 +395,7 @@ p {
   height: 15px;
   margin-top: 10px;
 }
-.container-alta form div {
+.container-alta form .mensaje-validacion {
   border: 1px solid crimson;
   background-color: gold;
   color: darkred;
@@ -406,25 +403,42 @@ p {
   border-radius: 5px;
   display: none;
 }
-.container-alta table {
-  margin: 2rem 0 0 0;
-  border: 1px solid var(--color-hover);
+.container-alta table, .container-alta th, .container-alta td {
+  border: 1px solid black;
   border-collapse: collapse;
+}
+.container-alta table {
+  width: 90%;
+}
+.container-alta #listado-productos {
   width: 100%;
-  text-align: left;
 }
-.container-alta table tr {
-  border: 1px solid var(--color-hover);
+.container-alta #drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 20px;
+  width: 300px;
+  margin: 25px 0;
+  padding: 20px;
 }
-.container-alta table tr td {
-  padding: 8px;
-  text-overflow: ellipsis;
-  overflow: hidden;
+.container-alta .button {
+  display: inline-block;
+  padding: 10px;
+  background: #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  border-radius: 1px solid #ccc;
 }
-.container-alta table tr:first-of-type td {
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 1rem;
+.container-alta #foto {
+  display: none;
+}
+.container-alta #gallery img {
+  width: 100px;
+  margin-top: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.container-alta #drop-area.highlight {
+  border-color: purple;
 }
 
 .section-carrito {
