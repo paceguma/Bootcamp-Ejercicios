@@ -133,7 +133,6 @@ class FormularioAlta {
     //Producto ingresado en el formulario
     leerProductoIngresado() {
         //tenemos pronto para incorporar a nuestra array de productos
-        console.log(this.imagenSubida)
         return {
             nombre: this.inputs[0].value,
             precio: this.inputs[1].value,

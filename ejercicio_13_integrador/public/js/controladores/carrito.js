@@ -18,7 +18,7 @@ class CarritoController extends CarritoModel {
     }
 
     elProductoEstaEnElCarrito(producto) {
-        console.log(this.carrito);
+        // console.log(this.carrito);
         return this.carrito.filter(prod => prod.id == producto.id).length 
     }
 
@@ -53,12 +53,21 @@ class CarritoController extends CarritoModel {
         try {
             const elemSectionCarrito = document.getElementsByClassName('section-carrito')[0]
             elemSectionCarrito.innerHTML = `<h2>Enviando Carrito</h2>`
-            await carritoService.guardarCarritoServicio(this.carrito)
+            const preference = await carritoService.guardarCarritoServicio(this.carrito)
+            // await carritoService.guardarCarritoServicio(this.carrito)
             //una vez que enviamos los productos limpiamos el carrito
             this.carrito = []
             //el localStorage solo guarda strings:
             localStorage.setItem('carrito', JSON.stringify(this.carrito))
             elemSectionCarrito.innerHTML = `<h2>Enviando Carrito OKKK!</h2>`
+
+            setTimeout( async () => {
+                elemSectionCarrito.classList.remove('section-carrito--visible')
+
+                console.log('PAGANDO', preference)
+                await renderPago(preference)
+            }, 0)
+            
         } catch (error) {
             console.error(error);
         }

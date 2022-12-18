@@ -20,6 +20,7 @@ function agregarCarrito(e, id, ref) {
 
 async function initInicio() {
     const productos = await productoController.obtenerProductos()
+    console.log("productos". productos)
     await renderPlantillaListado(productos)
     document.querySelector(".section-cards__header p").innerHTML = `Se encontraron ${productos.length} productos`
 }
